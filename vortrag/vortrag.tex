@@ -6,7 +6,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
-\usepackage{libertine}
+\usepackage{paratype}
 \usepackage{microtype}
 \usepackage{xcolor}
 \usepackage{pgffor}
@@ -33,7 +33,7 @@
   \end{frame}
   \noindent
   \begin{frame}[t]\frametitle{Farbtemperatur}
-      
+
   \begin{tikzpicture}
     \foreach \k in {0,1,...,100}{%
         \pgfmathsetmacro{\hue}{(\k/100)^1.715*0.79}
@@ -49,8 +49,8 @@
         \node at (\g,-1) {\makemycolor{\num}{\h}};
     }%
     \end{tikzpicture}
-  
+
   \end{frame}
-  
+
 \end{document}
 
