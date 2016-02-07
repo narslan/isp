@@ -1,0 +1,56 @@
+\documentclass{beamer}
+\usepackage[german]{babel}
+
+%\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{libertine}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{pgffor}
+%\usetheme{beamertheme-bjeldbak/beamerthemebjeldbak}
+\usepackage{tikz}
+
+\newcommand{\makemycolor}[2]{%
+    \pgfmathsetmacro{\hue}{(#1/100)^1.715*0.79}%
+    \definecolor{myhsbcolor}{hsb}{\hue,1,1}%
+    \textcolor{myhsbcolor}{#2}%
+}
+
+\title{Lumineszenz von Seltenerd-Ionen}
+\author{Nevroz}
+
+\begin{document}
+  {%
+    \setbeamertemplate{headline}{}
+    \frame{\titlepage}
+  }
+
+  \begin{frame}
+    \foreach \x in {300,320,...,900} {\textcolor[wave]{\x}{\x}\ }
+  \end{frame}
+  \noindent
+  \begin{frame}[t]\frametitle{Farbtemperatur}
+      
+  \begin{tikzpicture}
+    \foreach \k in {0,1,...,100}{%
+        \pgfmathsetmacro{\hue}{(\k/100)^1.715*0.79}
+        \definecolor{mycolor}{rgb:hsb}{\hue,1,1}
+        \node[color=mycolor] () at (\k/10,0) {$\bullet$};
+    }%
+    \foreach \f in {0,1,...,10}{%
+        \pgfmathtruncatemacro{\num}{\f*10}
+        \node () at (\f,-.5) {\num};
+    }
+    \foreach \g/\h in {0/Red,2/Orange,4/Yellow,6/Green,8/Blue,10/Purple}{%
+        \pgfmathtruncatemacro{\num}{\g*10}
+        \node at (\g,-1) {\makemycolor{\num}{\h}};
+    }%
+    \end{tikzpicture}
+  
+  \end{frame}
+  
+\end{document}
+

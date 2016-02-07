@@ -1,0 +1,180 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,mathtools}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage{microtype}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+%\usepackage[libertine]{newtxmath}
+%\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage[german]{babel}
+%\usepackage{tikz}
+\usepackage{chemfig}
+\usepackage{fancyhdr}
+\usepackage{sectsty}
+\usepackage{setspace}
+\usepackage[compatibility=4.7,language=german]{chemmacros}
+\pagestyle{fancy}
+\lhead{Nevroz Arslan }
+\rhead{20.11.2015}
+\setlength{\headheight}{15pt}
+
+
+%\renewcommand*\printatom[1]{{\fontsize{10}{12}\selectfont\ensuremath{\mathsf{#1}}}}
+%\sectionfont{\fontsize{12}{15}\selectfont}
+\setcrambond{2pt}{}{}
+
+%\renewcommand*\printatom[1]{{\fontsize{10}{12}\selectfont\ensuremath{\mathsf{#1}}}}
+%\sectionfont{\fontsize{12}{15}\selectfont}
+\setdoublesep{0.35700 em}  % 'Bond Spacing'
+\setatomsep{1.78500 em}    % 'Fixed Length'
+\setbondoffset{0.18265 em} % 'Margin Width'
+\newcommand{\bondwidth}{0.06642 em} % 'Line Width'
+\setbondstyle{line width = \bondwidth}
+
+\begin{document}
+
+%\chemrel[\chemfig{H_2O}][\chemfig{Hg{(OAc)}_2}]{->}
+\section{Präparat 4: \textnormal{Tetrakis(trimethylsilyl)silane}}
+%\schemedebug{true}
+\schemestart
+4x \chemfig{Si(-[3,0.7]{H_3C})(<:[:200]{H_3C})(<[:250]{H_3C})-[,0.6]Cl}
+\+
+\chemfig{8 \ Li}
+\+
+\chemfig{SiCl_4}
+\arrow(.mid east--[yshift=-10pt]){->[THF]}[,1.5]
+\chemfig{Si(-[3]{(H_3C)}_3Si)(<:[:200]{(H_3C)}_3Si)(<[:250]{(H_3C)}_3Si)-[:-1]{Si{(CH_3)}_3}}
+\+
+\chemfig{8 \ LiCl}
+\schemestop
+\section{Berechnung des Ansatzes: }
+\normalsize \section{Durchführung \cite{organikum}}
+\section{Ausbeute}
+\section{Physikalische Daten des Produktes}
+\section{Spektrenauswertung}
+\section{Mechanismus\cite{bio}}
+\setatomsep{2.5em}
+%\schemedebug{true}
+\bigskip
+
+\schemestart
+\chemname{\chemfig{@{sib0}Si(-[3]{Cl})(<:[:200]{Cl})(<[:250]{Cl})-[@{clb}]@{cl}Cl}}{I}
+\+
+\chemfig{@{lir0}\lewis{4.,Li}} x 2
+\arrow(c1.mid east--c2.mid west)
+\chemname{\chemfig{\chemabove{\lewis{0:,Si}}{\hspace{5mm}\scriptstyle\ominus}(-[3]{Cl})(<:[:200]{Cl})(<[:250]{Cl})-[7,0.6,,,draw=none]\chemabove{Li}{\hspace{5mm}\scriptstyle\oplus}}}{II}
+\+
+\chemfig{LiCl}
+\chemmove{\draw[shorten <=3pt,shorten >=1pt,red,thick](clb).. controls +(north:5mm) and +(90:5mm).. (cl);}
+\chemmove{\draw[shorten <=5pt,shorten >=1pt,red,thick](lir0).. controls +(220:10mm) and +(300:5mm)..node[below,blue,yshift=-1mm] {$\scriptstyle 2 e^-$} (sib0);}
+\schemestop
+\bigskip
+
+\schemestart
+\chemname{\chemfig{@{sib1}\chemabove{\lewis{0:,Si}}{\hspace{5mm}\scriptstyle\ominus}(-[3]{Cl})(<:[:200]{Cl})(<[:250]{Cl})-[7,0.6,,,draw=none]\chemabove{Li}{\hspace{5mm}\scriptstyle\oplus}}}{II}
+\+
+\chemname{\chemfig{@{sib2}Si(-[3]{H_3C})(<:[:200]{H_3C})(<[:250]{H_3C})-[@{clb1}]@{cl1}Cl}}{III}
+\arrow(c1.mid east--c2.mid west)
+\chemname{\chemfig{Si(-[3]{Cl})(<:[:200]{Cl})(<[:250]{Cl})-Si(-[1]{CH_3})(<:[:-10]{CH_3})(<[:-70]{CH_3})}}{IV}
+\+
+\chemfig{LiCl}
+\chemmove{\draw[shorten <=6pt,shorten >=2pt,red,thick](sib1).. controls +(30:9mm) and +(170:5mm).. (sib2);}
+\chemmove{\draw[shorten <=3pt,shorten >=1pt,red,thick](clb1).. controls +(100:5mm) and +(90:5mm).. (cl1);}
+\schemestop
+\bigskip
+
+\schemestart
+\chemname{\chemfig{Si(-[3]{H_3C})(<:[:200]{H_3C})(<[:250]{H_3C})-@{sia3}Si(-[@{clb3}1]@{cla3}Cl)(<:[:-10]Cl)(<[:-70]Cl)}}{IV}
+\+
+\chemfig{@{lir1}\lewis{4.,Li}} x 2
+\arrow(c1.mid east--c2.mid west)
+\chemname{\chemfig{Si(-[3]{H_3C})(<:[:200]{H_3C})(<[:250]{H_3C})-\chemabove{\lewis{2:,Si}}{\hspace{5mm}\scriptstyle\ominus}(-[1,0.8,,,draw=none]\chemabove{Li}{\hspace{5mm}\scriptstyle\oplus})(<:[:-10]Cl)(<[:-70]Cl)}}{V}
+\+
+\chemfig{LiCl}
+\chemmove{\draw[shorten <=3pt,shorten >=1pt,red,thick](clb3).. controls +(north west:5mm) and +(145:5mm).. (cla3);}
+\chemmove{\draw[shorten <=5pt,shorten >=5pt,red,thick](lir1).. controls +(230:10mm) and +(330:5mm)..node[below,blue,yshift=-1mm] {$\scriptstyle 2 e^-$} (sia3);}
+\schemestop
+
+\bigskip
+
+\schemestart
+\chemname{\chemfig{Si(-[3]{H_3C})(<:[:200]{H_3C})(<[:250]{H_3C})-@{sib5}\chemabove{\lewis{2:,Si}}{\hspace{5mm}\scriptstyle\ominus}(-[2,0.8,,,draw=none]\chemabove{Li}{\hspace{5mm}\scriptstyle\oplus})(<:[:-10]Cl)(<[:-70]Cl)}}{V}
+\+
+\chemname{\chemfig{@{sib6}Si(-[3]{H_3C})(<:[:200]{H_3C})(<[:250]{H_3C})-[@{clb6}]@{cl6}Cl}}{III}
+\arrow(c1.mid east--c2.mid west)
+\chemname{\chemfig{Si(-[3]{H_3C})(<:[:200]{H_3C})(<[:250]{H_3C})-Si(-[1]Si|{(CH_3)}_3)(<:[:-10]Cl)(<[:-70]Cl)}}{VI}
+\+
+\chemfig{LiCl}
+\chemmove{\draw[shorten <=6pt,shorten >=2pt,red,thick](sib5).. controls +(north:9mm) and +(170:5mm).. (sib6);}
+\chemmove{\draw[shorten <=3pt,shorten >=1pt,red,thick](clb6).. controls +(100:5mm) and +(90:5mm).. (cl6);}
+\schemestop
+
+\bigskip
+
+\schemestart
+\chemname{\chemfig{Si(-[3]{H_3C})(<:[:200]{H_3C})(<[:250]{H_3C})-@{sia4}Si(-[1]Si|{(CH_3)}_3)(<:[@{clb7}:-10]@{cla7}Cl)(<[:-70]Cl)}}{VI}
+\+
+\chemfig{@{lir2}\lewis{4.,Li}} x 2
+\arrow(c1.mid east--c2.mid west)
+\chemname{\chemfig{Si(-[3]{H_3C})(<:[:200]{H_3C})(<[:250]{H_3C})-\chemabove{\lewis{2:,Si}}{\hspace{5mm}\scriptstyle\ominus}(-[1,0.8,,,draw=none]\chemabove{Li}{\hspace{5mm}\scriptstyle\oplus})(<:[:-10]Si|{(CH_3)}_3)(<[:-70]Cl)}}{VII}
+\+
+\chemfig{LiCl}
+\chemmove{\draw[shorten <=3pt,shorten >=1pt,red,thick](clb7).. controls +(north west:5mm) and +(145:5mm).. (cla7);}
+\chemmove{\draw[shorten <=5pt,shorten >=5pt,red,thick](lir2).. controls +(230:10mm) and +(330:5mm)..node[below,blue,yshift=-1mm] {$\scriptstyle 2 e^-$} (sia4);}
+\schemestop
+
+\bigskip
+
+\schemestart
+\chemname{\chemfig{Si(-[3]{H_3C})(<:[:200]{H_3C})(<[:250]{H_3C})-@{sil7}\chemabove{\lewis{2:,Si}}{\hspace{5mm}\scriptstyle\ominus}(-[2,0.8,,,draw=none]\chemabove{Li}{\hspace{5mm}\scriptstyle\oplus})(<:[:-10]Si|{(CH_3)}_3)(<[:-70]Cl)}}{VII}
+\+
+\chemname{\chemfig{@{sib7}Si(-[3]{H_3C})(<:[:200]{H_3C})(<[:250]{H_3C})-[@{clb8}]@{cl8}Cl}}{III}
+\arrow(c1.mid east--c2.mid west)
+\chemname{\chemfig{Si(-[:120]{(CH_3)}_3|Si)(<:[:200]{(CH_3)}_3|Si)(<[:250]{(CH_3)}_3|Si)-Cl}}{VIII}
+\+
+\chemfig{LiCl}
+\chemmove{\draw[shorten <=6pt,shorten >=2pt,red,thick](sil7).. controls +(north:9mm) and +(170:5mm).. (sib7);}
+\chemmove{\draw[shorten <=3pt,shorten >=1pt,red,thick](clb8).. controls +(100:5mm) and +(90:5mm).. (cl8);}
+\schemestop
+
+\bigskip
+
+\schemestart
+\chemname{\chemfig{@{sia5}Si(-[:120]{(CH_3)}_3|Si)(<:[:200]{(CH_3)}_3|Si)(<[:250]{(CH_3)}_3|Si)-[@{clc7}]@{cld7}Cl}}{VIII}
+\+
+\chemfig{@{lir3}\lewis{4.,Li}} x 2
+\arrow(c1.mid east--c2.mid west)
+\chemname{\chemfig{\chemabove{\lewis{0:,Si}}{\hspace{5mm}\scriptstyle\ominus}(-[:120]{(CH_3)}_3|Si)(<:[:200]{(CH_3)}_3|Si)(<[:250]{(CH_3)}_3|Si)(-[1,0.8,,,draw=none]\chemabove{Li}{\hspace{5mm}\scriptstyle\oplus})}}{IX}
+\+
+\chemfig{LiCl}
+\chemmove{\draw[shorten <=3pt,shorten >=1pt,red,thick](clc7).. controls +(north west:5mm) and +(145:5mm).. (cld7);}
+\chemmove{\draw[shorten <=5pt,shorten >=5pt,red,thick](lir3).. controls +(230:10mm) and +(330:5mm)..node[below,blue,yshift=-1mm] {$\scriptstyle 2 e^-$} (sia5);}
+\schemestop
+
+\bigskip
+
+\schemestart
+\chemname{\chemfig{@{sil9}\chemabove{\lewis{0:,Si}}{\hspace{5mm}\scriptstyle\ominus}(-[:120]{(CH_3)}_3|Si)(<:[:200]{(CH_3)}_3|Si)(<[:250]{(CH_3)}_3|Si)(-[1,0.8,,,draw=none]\chemabove{Li}{\hspace{5mm}\scriptstyle\oplus})}}{IX}
+\+
+\chemname{\chemfig{@{sib9}Si(-[3]{H_3C})(<:[:200]{H_3C})(<[:250]{H_3C})-[@{clb9}]@{cl9}Cl}}{III}
+\arrow(c1.mid east--c2.mid west)
+\chemname{\chemfig{Si(-[:120]{(CH_3)}_3|Si)(<:[:200]{(CH_3)}_3|Si)(<[:250]{(CH_3)}_3|Si)(-[,1.3]Si{(CH_3)}_3)}}{X}
+\+
+\chemfig{LiCl}
+\chemmove{\draw[shorten <=6pt,shorten >=2pt,red,thick](sil9).. controls +(20:9mm) and +(170:5mm).. (sib9);}
+\chemmove{\draw[shorten <=3pt,shorten >=1pt,red,thick](clb8).. controls +(100:5mm) and +(90:5mm).. (cl8);}
+\schemestop
+
+
+\section{Literatur}
+\renewcommand{\section}[2]{}%
+\begin{thebibliography}{}
+\bibitem{organikum}
+H. Becker \textit{Organikum}, 21. Aufl., Wiley-VCH, Weinheim \textbf{2009}, S. 528.
+\bibitem{bio}
+J. Buddrus, \textit{Grundlagen der Organische Chemie}, 4. Aufl., De Gruyter, Berlin \textbf{2011}, S. 635.
+\end{thebibliography}
+\end{document}
