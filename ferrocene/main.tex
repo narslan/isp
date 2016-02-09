@@ -24,7 +24,7 @@
 %\usepackage{chemstyle}
 \usepackage[version=4]{mhchem}
 \usepackage{graphicx}
-
+\usepackage{tabularx}
 %\usepackage[compatibility=4.7,language=german]{chemmacros}
 
 \usepackage[ddmmyyyy]{datetime}
@@ -63,17 +63,17 @@
 \section{Berechnung des Ansatzes: }
 Es sollten aus 9.430 g (58.21 \si{\milli\mol}) Eisen(III) Chlorid Bis($\eta^5$-cyclopentadienyl)eisen hergestellt werden.
 Die Umrechnung des Literaturansatzes\cite{bio} ergab folgenden Ansatz:\\
-\begin{tabular}{llrrr}
+\begin{tabularx}{\textwidth}{lrrrr}
 \toprule
 \textbf{Bezeichnung} &\textbf{ M [\si{\gram\per\mol}]} & \textbf{n [\si{\milli\mol}]} & \textbf{Menge} & \textbf{Equiv}\\
 \midrule
-Eisen(III) Chlorid     & 162.20  & 58.21 \si{\milli\mol}  & 9.430 g  &  2.00  \\
-Eisen        & 55.93   & 29.10 \si{\milli\mol}  & 1.620 g  &  1.00 \\
-Cyclopentadien      & 66.10   & 174.60 \si{\milli\mol} & 11.54 \si{\gram} &  6.00 \\
-Diethylamin & 73.14   & 349.20 \si{\milli\mol} & 25.54 \si{\gram} &  12.00\\
+Eisen(III) Chlorid     & 162.20  & 58.21  & 9.430 g  &  2.00  \\
+Eisen        & 55.93   & 29.10  & 1.620 g  &  1.00 \\
+Cyclopentadien      & 66.10   & 174.60  & 11.54 \si{\gram} &  6.00 \\
+Diethylamin & 73.14   & 349.20  & 25.54 \si{\gram} &  12.00\\
 Tetrahydrofuran  &   &  &  &  LM\\
 \bottomrule
-\end{tabular}\\
+\end{tabularx}\\
 
 \normalsize \section{Durchführung \cite{bio}}
 In einem ausgehizten 250 ml-Dreihalskolben wurden unter Schutzgas \ce{FeCl_3} (9.43 \si{\gram}, (58.21 \si{\milli\mol})) und \ce{Fe} (1.62 \si{\gram}, 19.40 \si{\milli\mol}) in Tetrahydrofuran (50 \si{\milli\liter}) suspendiert. Diese Suspension wurde 5 Stunden lang unter Rückfluss erhitzt. Danach wurde das Lösungsmittel am Hochvakuum abgezogen. Der Rückstand wurde hintereinander mit Cyclopentadien (11.54 \si{\gram}, 174.60 \si{\milli\mol}) und Diethylamin(25.54 \si{\gram}, 349.20 \si{\milli\mol}) unter Kühlung einer Eis-Wasser-Kältemischung versetzt. Das Reaktionsgemisch wurde noch 8 Stunden bei der Raumtemperatur gerührt und anschließend durch Kältedestillation zur Trockne eingedampft. Danach wurde der Rückstand in einer Soxhlet-Apparatur mit Petrolether extrahiert. Der so erhaltene Auszug wurde über Nacht in der Gefriertruhe auskristallisieren gelassen. Das Produkt wurde als orangener Feststoff (5.704 \si{\gram}, 11.36 \si{\milli\mol}, 35 \%) erhalten.\\
@@ -111,7 +111,7 @@ Unter Abspaltung von Chloridionen entsteht das gewünschte Produkt Bis($\eta^5$-
 \end{figure}
 \section{Abfallentsorgung}
 Das im Rotationsverdampfer abgetrennte Lösungsmittel wurde im Behälter für halogenfreie Kohlenwasserstoffe entsorgt.
-Die Natriumreste wurden mit Ethanol vernichtet. 
+Der Rest des Natriums, das von dem Trocknen des Lösungsmittels übriggeblieben war, wurde mit Ethanol zerstört. 
 \section{Literatur}
 \renewcommand{\section}[2]{}%
 \begin{thebibliography}{}
