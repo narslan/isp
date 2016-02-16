@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage[german]{babel}
+
+%\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+%\usepackage{paratype}
+\usepackage{libertine}
+%\usepackage[scaled]{berasans}
+\renewcommand*\familydefault{\sfdefault}  %%
+\usepackage[utf8]{inputenc}
+
+\usepackage[T1]{fontenc}
+
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{pgffor}
+%\usetheme{beamertheme-bjeldbak/beamerthemebjeldbak}
+\usepackage{tikz}
+\usepackage{tikzorbital}
+
+
+
+\begin{document}
+
+\begin{tikzpicture}
+\draw [->,ultra thick] (-1,-2) --   (-1,4) node[above] {\Large Energie};
+\drawLevel[pos = {(0,0)},    width = 1]{f1};
+\drawLevel[pos = {(1.2,0)},  width = 1]{f2};
+\drawLevel[pos = {(2.4,0)},  width = 1]{f3};
+\drawLevel[pos = {(3.6,0)},  width = 1]{f4};
+\drawLevel[pos = {(4.8,0)},  width = 1]{f5};
+\drawLevel[pos = {(6,0)},    width = 1]{f6};
+\drawLevel[pos = {(7.2,0)},  width = 1]{f7};
+\drawLevel[pos = {(8.4,0)},  width = 1]{f8};
+\drawLevel[pos = {(0,2)},  width = 1]{5d0};
+\drawLevel[pos = {(1.2,2)}, width = 1]{5d1};
+\drawLevel[pos = {(2.4,2)}, width = 1]{5d2};
+\drawLevel[pos = {(3.6,2)}, width = 1]{5d3};
+\drawLevel[pos = {(4.8,2)}, width = 1]{5d4};
+\node[right] at (right f8) {\Large 4f} ;
+\node[right] at (right 5d4) {\Large 5d} ;
+
+
+\end{tikzpicture}
+
+\end{document}

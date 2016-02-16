@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage[german]{babel}
+
+%\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+%\usepackage{paratype}
+\usepackage{libertine}
+%\usepackage[scaled]{berasans}
+\renewcommand*\familydefault{\sfdefault}  %%
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs} % To thicken table lines
+
+\usepackage[T1]{fontenc}
+
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{pgffor}
+%\usetheme{beamertheme-bjeldbak/beamerthemebjeldbak}
+\usepackage{tikz}
+\usepackage{tikzorbital}
+\usepackage{graphics}
+\usepackage[version=4]{mhchem}
+\usepackage{graphicx}
+
+\tikzset{
+    level1/.style = {
+        ultra thick,
+        red
+    },
+  level2/.style = {
+        ultra thick,
+        green
+    },
+    level3/.style = {
+        ultra thick,
+        blue
+    },
+    level4/.style = {
+        ultra thick,
+        black
+    },
+    level5/.style = {
+        ultra thick,
+        brown
+    },
+    connect/.style = {
+        dashed,
+        red
+    },
+    notice/.style = {
+        draw,
+        rectangle callout,
+        callout relative pointer={#1}
+    },
+    label/.style = {
+        text width=2cm
+    }
+}
+
+
+
+\begin{document}
+
+ \begin{tikzpicture}[scale=0.5]
+\draw [->,ultra thick] (0,0) --   (0,10) node[above] {\Large Energie};
+\draw [->,ultra thick] (0,0) -- node[below] {\Large n (Schale)} (20,0);
+    \draw[level4] (6,1) -- node[above] {4s} (7,1);
+       \draw[level4] (6,2.5) -- node[above] {4p} (7,2.5);
+       \draw[level4] (4.8,2.5) --  (5.8,2.5);
+       \draw[level4] (7.2,2.5) --  (8.2,2.5);
+      \draw[level4] (6,4) -- node[above] {4d} (7,4);
+       \draw[level4] (7.2,4) --  (8.2,4);
+       \draw[level4] (8.4,4) --  (9.4,4);
+       \draw[level4] (4.8,4) --  (5.8,4);
+       \draw[level4] (3.6,4) --  (4.6,4);
+       \draw[level4] (6,6) -- node[above] {4f} (7,6);
+       \draw[level4] (7.2,6) --  (8.2,6);
+       \draw[level4] (8.4,6) --  (9.4,6);
+       \draw[level4] (4.8,6) --  (5.8,6);
+        \draw[level4] (3.6,6) --  (4.6,6);
+                       \draw[level4] (2.4,6) --  (3.4,6);
+                     \draw[level4] (9.6,6) --  (10.6,6);
+                     
+                       \draw[level5] (14,3)  -- node[above] {5s} (15,3);
+           \draw[level5] (14,5) -- node[above] {5p} (15,5);
+                      \draw[level5] (12.8,5) --  (13.8,5);
+          \draw[level5] (15.2,5) --  (16.2,5);
+                       \draw[level5] (14,6.5) -- node[above] {5d} (15,6.5);
+     \draw[level5] (12.8,6.5) --  (13.8,6.5);
+          \draw[level5] (15.2,6.5) --  (16.2,6.5);
+              \draw[level5] (11.6,6.5) --  (12.6,6.5);
+          \draw[level5] (16.4,6.5) --  (17.4,6.5);
+          \draw[level1] (18,5.9) -- node[above] {6s} (19,5.9);
+    \end{tikzpicture}
+
+\end{document}

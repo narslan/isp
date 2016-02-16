@@ -1,31 +1,38 @@
 \documentclass{beamer}
 \usepackage[german]{babel}
-
-%\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
-\usepackage{paratype}
 %\usepackage{libertine}
-%\usepackage[scaled]{berasans}
-\renewcommand*\familydefault{\sfdefault}  %%
+%\renewcommand*\familydefault{\sfdefault}  %%
+\usepackage[default]{opensans}
+%\usepackage{gillius2}
+%\usepackage{lato}
+
 \usepackage[utf8]{inputenc}
 
 \usepackage[T1]{fontenc}
+
+\usepackage{booktabs} % To thicken table lines
+\usepackage{multirow}
 
 
 \usepackage{microtype}
 \usepackage{xcolor}
 \usepackage{pgffor}
-%\usetheme{beamertheme-bjeldbak/beamerthemebjeldbak}
+
 \usepackage{tikz}
+\usepackage[version=4]{mhchem}
+
+%\usepackage{pgfplots}
+ %\pgfplotsset{compat=1.13}
+\usepackage{graphicx}
 
 \usepackage[absolute,overlay]{textpos}
+\usecolortheme[light,accent=red]{solarized}
+
+\newcommand\ytl[2]{
+\parbox[b]{8em}{\hfill{\color{cyan}\bfseries\sffamily #1}~$\cdots\cdots$~}\makebox[0pt][c]{$\bullet$}\vrule\quad \parbox[c]{4.5cm}{\vspace{7pt}\color{red!40!black!80}\raggedright\sffamily #2.\\[7pt]}\\[-3pt]}
 %\usepackage[texcoord,grid,gridunit=mm,gridcolor=red!10,subgridcolor=green!10]{eso-pic}
 \setbeamertemplate{navigation symbols}{}
 
-\newcommand{\makemycolor}[2]{%
-    \pgfmathsetmacro{\hue}{(#1/100)^1.715*0.79}%
-    \definecolor{myhsbcolor}{hsb}{\hue,1,1}%
-    \textcolor{myhsbcolor}{#2}%
-}
 
 \title{Lumineszenz von Seltenerd-Ionen}
 \author{Nevroz Arslan}
@@ -35,65 +42,149 @@
     \setbeamertemplate{headline}{}
     \frame{\titlepage}
   }
+\section{Einsatzbereiche seltener Erden als Leuchtstoffe} % (fold)
 
-  \begin{frame}
-\frametitle{There Is No Largest Prime Number}
-\framesubtitle{The proof uses \textit{reductio ad absurdum}.}
-    %\foreach \x in {300,320,...,900} {\textcolor[wave]{\x}{\x}\ }\\
-    \begin{columns}
-      \column{.5\textwidth}
-               
-       \begin{figure}[!htbp]
-          \centering
-          \includegraphics[width=\textwidth]{farbindex.png}
-        \end{figure}
-       
-       \column{.5\textwidth}
-            \begin{block}{Answered Questions}
-          How many primes are there?
-          \end{block}
-      \end{columns}
+% section section_name (end)
+  \begin{frame}[t]\frametitle{Einsatzbereiche seltener Erden als Leuchtstoffe}
 
+  \begin{beamerboxesrounded}[shadow=true]{}
+    Einzigartige optischen Eigenschaften
+  \end{beamerboxesrounded}
+  \begin{beamerboxesrounded}[shadow=false]{}
+    Vielfache Einsatzmöglichkeiten als lumineszierende Materialien.
+  \end{beamerboxesrounded}
+\pause
+    \begin{itemize}
+      \item Leuchtstoffröhren
+      \item Farbfernsehröhren
+      \item Anzeigetafeln
+      \item Plasmabildschirmen
+      \item Die weißen Leuchtdiode (LED)
+      \item Na- und Hg-Dampflampen
+      \item Geldscheine
+      \item Kunstgläser, Pigment
+      \item Upconversion-Leuchtstoffen
+      \item Strahlentherapie zur Behandlung von Hautkrankheiten
+    \end{itemize}
   \end{frame}
+
+\section{Gruppeneigenschaften} % (fold)
+
+\begin{frame}[t]\frametitle{Elektronenkonfiguration}
+
+\begin{beamerboxesrounded}[shadow=true]{Dreiwertigkeit}
+  Die Lanthanoide treten bevorzugt dreiwertig auf. 
+\end{beamerboxesrounded}
+     \begin{table}
+      \centering
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{cccccccccccccccc}
+\toprule
+ $[Xe]$ &\ce{La^{3+}} & \ce{Ce^{3+}} & \ce{Pr^{3+}} & \ce{Nd^{3+}} & \ce{Pm^{3+}}& \ce{Sm^{3+}} & \ce{Eu^{3+}} & \ce{Gd^{3+}} & \ce{Tb^{3+}}& \ce{Dy^{3+}} & \ce{Ho^{3+}} & \ce{Er^{3+}} & \ce{Tm^{3+}} & \ce{Yb^{3+}} & \ce{Lu^{3+}}\\
+   & \ce{Ce^{4+}} &\ce{Pr^{4+}} & \ce{Nd^{4+}} &\ce{La^{3+}} & \ce{La^{3+}} & \ce{La^{3+}} & \ce{Sm^{2+}} & \ce{Eu^{2+}} & \ce{Dy^{4+}}&  &  & &  & \ce{Tm^{2+}}& \ce{Yb^{2+}}\\
+   &  & &  &  &  &  &  &  & \ce{Tb^{4+}} &  &  &  &  & & \\
+\midrule
+  4f & 0 &1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13& 14\\
+  \bottomrule
+\end{tabular}
+}
+\end{table}
+
+    \begin{itemize}
+      \item \ce{La} (\ce{f^0}), \ce{Gd} (\ce{f^7}), \ce{Lu} (\ce{f^{14}}) sind nur dreiwertig.
+      \item Die stabilen f-Konfiguration werden erreicht in \ce{Ce^{4+}}, \ce{Tb^{4+}}, \ce{Eu^{2+}},\ce{Yb^{4+}}
+    \end{itemize}
+\end{frame}
+  \begin{frame}[t]\frametitle{Farben von Lanthanoidionen}
+      
+    \begin{table}
+      \centering
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{cccccccccccccccc}
+\toprule
+ $[Xe]$ & \ce{La^{3+}} & \ce{Ce^{3+}} & \ce{Pr^{3+}} & \ce{Nd^{3+}} & \ce{Pm^{3+}}& \ce{Sm^{3+}} & \ce{Eu^{3+}} & \ce{Gd^{3+}} & \ce{Tb^{3+}}& \ce{Dy^{3+}} & \ce{Ho^{3+}} & \ce{Er^{3+}} & \ce{Tm^{3+}} & \ce{Yb^{3+}} & \ce{Lu^{3+}}\\
+   & \ce{Ce^{4+}} &\ce{Pr^{4+}} & \ce{Nd^{4+}} &\ce{La^{3+}} & \ce{La^{3+}} & \ce{La^{3+}} & \ce{Sm^{2+}} & \ce{Eu^{2+}} & \ce{Dy^{4+}}&  &  & &  & \ce{Tm^{2+}}& \ce{Yb^{2+}}\\
+   &  & &  &  &  &  &  &  & \ce{Tb^{4+}} &  &  &  &  & & \\
+\midrule
+  4f & 0 &1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13& 14\\
+  \bottomrule
+\end{tabular}
+}
+\end{table}
   
-\begin{frame}[t]\frametitle{ Seltenerdionen mit f$\rightarrow$d-Übergängen}
- \begin{beamerboxesrounded}[lower=block body,shadow=false]{f-d}
-   \textbf{ Ein guter Leuchtstoff soll die Anregungsenergie möglichst effizient absorbieren und in Form von Licht wieder
-   emittieren; das bedeutet, dass die Quantenausbeute [5] mög-
-   lichst hoch sein soll.}
-    \end{beamerboxesrounded}   
+  \end{frame}
+
+
+
+    \begin{table}
+      \centering
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{cccccccccccccccc}
+\toprule
+ $[Xe]$ &\ce{La^{3+}} & \ce{Ce^{3+}} & \ce{Pr^{3+}} & \ce{Nd^{3+}} & \ce{Pm^{3+}}& \ce{Sm^{3+}} & \ce{Eu^{3+}} & \ce{Gd^{3+}} & \ce{Tb^{3+}}& \ce{Dy^{3+}} & \ce{Ho^{3+}} & \ce{Er^{3+}} & \ce{Tm^{3+}} & \ce{Yb^{3+}} & \ce{Lu^{3+}}\\
+   & \ce{Ce^{4+}} &\ce{Pr^{4+}} & \ce{Nd^{4+}} &\ce{La^{3+}} & \ce{La^{3+}} & \ce{La^{3+}} & \ce{Sm^{2+}} & \ce{Eu^{2+}} & \ce{Dy^{4+}}&  &  & &  & \ce{Tm^{2+}}& \ce{Yb^{2+}}\\
+   &  & &  &  &  &  &  &  & \ce{Tb^{4+}} &  &  &  &  & & \\
+\midrule
+  4f & 0 &1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13& 14\\
+  \bottomrule
+\end{tabular}
+}
+\end{table}
+
+\begin{frame}[t]\frametitle{Dotierung}
+\ce{Y2O3:Eu^{2+}} bedeutet, dass ein Wirtgitter aus Yttriumoxid mit Europium-Ionen dotiert ist
+ d. h. dass ca. fünf Prozent der Yttrium-Ionen durch Europium-Ionen ersetzt wurde.
+
 
 \end{frame}
 
-  \begin{frame}[t]\frametitle{Farbtemperatur}
 
-  \begin{tikzpicture}
-    \foreach \k in {0,1,...,100}{%
-        \pgfmathsetmacro{\hue}{(\k/100)^1.715*0.79}
-        \definecolor{mycolor}{rgb:hsb}{\hue,1,1}
-        \node[color=mycolor] () at (\k/10,0) {$\bullet$};
-    }%
-    \foreach \f in {0,1,...,10}{%
-        \pgfmathtruncatemacro{\num}{\f*10}
-        \node () at (\f,-.5) {\num};
-    }
-    \foreach \g/\h in {0/Rot,2/Orange,4/Gelb,6/Grün,8/Blau,10/Purpur}{%
-        \pgfmathtruncatemacro{\num}{\g*10}
-        \node at (\g,-1) {\makemycolor{\num}{\h}};
-    }%
-    \end{tikzpicture}
+\begin{frame}[t]\frametitle{Dotierung und Wirtgitter}
+\begin{itemize}
+  \item Mit Leuchtstoffen gezielt verunreinigte Halbleiterkristalle
+  \item It has been found that the average life period is practically independent of temperature and wavelength but depends markedly on concentration 
+  \item the intensity, polarisation and the average life period are all dependent on concentration
+\end{itemize}
 
+
+\end{frame}
+
+  \begin{frame}
+  \frametitle{Lumineszenz}
+    \begin{itemize}
+    \item Der eigentliche Lumineszenzprozeß ist weitgehend unabhängig von der chemischen Umgebung
+    \item Strahlungslose Desaktivierung \ce{Ln^* -> Ln +} Wärme
+    \item Lumineszenz \ce{Ln^* -> Ln + h \nu}
+    \end{itemize}
   \end{frame}
+  
+\begin{frame}
+  \frametitle{Stokes Verschiebung}
+    \begin{itemize}
+    \item Ausgestrahltes Licht besitzt eine kleinere Frequenz als absorbierte Strahlung   
+    \end{itemize}
+  \end{frame}
+
+
+\begin{frame}[t]\frametitle{Was macht ein Leuchtstoff gut?}
+\begin{itemize}
+ \item Anregungsenergie möglichst effizient absorbieren 
+ \item Quantenausbeute möglichst hoch sein soll
+\end{itemize}  
+\end{frame}
 
   %Folie 4 Auswahlregeln
   \begin{frame}[t]\frametitle{Laporte Verbot}
-      
-  
-  
-  \end{frame}
+ 
+\end{frame}
+\section{}
+  \begin{frame}[t]\frametitle{Farben von Lanthanoid-Ionen in wässriger Lösung}
+\begin{itemize}
+  \item In Verbindungen liegt Lanthan als farbloses \ce{La^{3+}} vor.
+\end{itemize}
 
-
-
+\end{frame}
 %http://www.rsc.org/chemistryworld/News/2009/September/01090901.asp
+%https://www.osapublishing.org/oe/fulltext.cfm?uri=oe-19-S3-A331
 \end{document}
 

@@ -1,0 +1,5 @@
+\begin{tikzpicture}
+
+\drawLevel[elec = up, pos = {(0,0)}, width = 2]{1sH};
+
+\end{tikzpicture}
