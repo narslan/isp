@@ -26,7 +26,7 @@
 \usepackage{graphicx}
 
 \usepackage[absolute,overlay]{textpos}
-\usecolortheme[light,accent=red]{solarized}
+%\usecolortheme[light,accent=red]{solarized}
 
 \newcommand\ytl[2]{
 \parbox[b]{8em}{\hfill{\color{cyan}\bfseries\sffamily #1}~$\cdots\cdots$~}\makebox[0pt][c]{$\bullet$}\vrule\quad \parbox[c]{4.5cm}{\vspace{7pt}\color{red!40!black!80}\raggedright\sffamily #2.\\[7pt]}\\[-3pt]}
@@ -40,6 +40,7 @@
 \begin{document}
   {%
     \setbeamertemplate{headline}{}
+   \setbeamercolor{postit}{fg=black,bg=yellow}
     \frame{\titlepage}
   }
 \section{Einsatzbereiche seltener Erden als Leuchtstoffe} % (fold)
@@ -73,7 +74,7 @@
 \begin{frame}[t]\frametitle{Elektronenkonfiguration}
 
 \begin{beamerboxesrounded}[shadow=true]{Dreiwertigkeit}
-  Die Lanthanoide treten bevorzugt dreiwertig auf. 
+  Die Lanthanoide treten bevorzugt dreiwertig auf.
 \end{beamerboxesrounded}
      \begin{table}
       \centering
@@ -95,41 +96,24 @@
       \item Die stabilen f-Konfiguration werden erreicht in \ce{Ce^{4+}}, \ce{Tb^{4+}}, \ce{Eu^{2+}},\ce{Yb^{4+}}
     \end{itemize}
 \end{frame}
-  \begin{frame}[t]\frametitle{Farben von Lanthanoidionen}
-      
-    \begin{table}
-      \centering
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{cccccccccccccccc}
-\toprule
- $[Xe]$ & \ce{La^{3+}} & \ce{Ce^{3+}} & \ce{Pr^{3+}} & \ce{Nd^{3+}} & \ce{Pm^{3+}}& \ce{Sm^{3+}} & \ce{Eu^{3+}} & \ce{Gd^{3+}} & \ce{Tb^{3+}}& \ce{Dy^{3+}} & \ce{Ho^{3+}} & \ce{Er^{3+}} & \ce{Tm^{3+}} & \ce{Yb^{3+}} & \ce{Lu^{3+}}\\
-   & \ce{Ce^{4+}} &\ce{Pr^{4+}} & \ce{Nd^{4+}} &\ce{La^{3+}} & \ce{La^{3+}} & \ce{La^{3+}} & \ce{Sm^{2+}} & \ce{Eu^{2+}} & \ce{Dy^{4+}}&  &  & &  & \ce{Tm^{2+}}& \ce{Yb^{2+}}\\
-   &  & &  &  &  &  &  &  & \ce{Tb^{4+}} &  &  &  &  & & \\
-\midrule
-  4f & 0 &1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13& 14\\
-  \bottomrule
-\end{tabular}
-}
-\end{table}
-  
+
+
+
+  \begin{frame}[t]\frametitle{ Die farblosen Lanthanoidionen }
+  \begin{beamerboxesrounded}[shadow=false]{\ce{Gd^{3+}, 4f^7, ^{8}_{}S_{7/2}}}
+  \begin{itemize}
+  \item \ce{Gd^{3+}} hat keine Farbe
+  \end{itemize}
+    \end{beamerboxesrounded}
   \end{frame}
 
+ \begin{frame}[t]\frametitle{ Die farbigen Lanthanoidionen }
+  \begin{beamerboxesrounded}[shadow=false]{\ce{Tb^{3+}, 4f^8, ^{7}_{}F_{6} -> ^{5}_{}D_{4}}}
+   \pgfdeclareimage[interpolate=true,height=1cm]{image1}{pics/tbsulfat}
+   \pgfuseimage{image1}
+  \end{beamerboxesrounded}
+  \end{frame}
 
-
-    \begin{table}
-      \centering
-\resizebox{\linewidth}{!}{%
-\begin{tabular}{cccccccccccccccc}
-\toprule
- $[Xe]$ &\ce{La^{3+}} & \ce{Ce^{3+}} & \ce{Pr^{3+}} & \ce{Nd^{3+}} & \ce{Pm^{3+}}& \ce{Sm^{3+}} & \ce{Eu^{3+}} & \ce{Gd^{3+}} & \ce{Tb^{3+}}& \ce{Dy^{3+}} & \ce{Ho^{3+}} & \ce{Er^{3+}} & \ce{Tm^{3+}} & \ce{Yb^{3+}} & \ce{Lu^{3+}}\\
-   & \ce{Ce^{4+}} &\ce{Pr^{4+}} & \ce{Nd^{4+}} &\ce{La^{3+}} & \ce{La^{3+}} & \ce{La^{3+}} & \ce{Sm^{2+}} & \ce{Eu^{2+}} & \ce{Dy^{4+}}&  &  & &  & \ce{Tm^{2+}}& \ce{Yb^{2+}}\\
-   &  & &  &  &  &  &  &  & \ce{Tb^{4+}} &  &  &  &  & & \\
-\midrule
-  4f & 0 &1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13& 14\\
-  \bottomrule
-\end{tabular}
-}
-\end{table}
 
 \begin{frame}[t]\frametitle{Dotierung}
 \ce{Y2O3:Eu^{2+}} bedeutet, dass ein Wirtgitter aus Yttriumoxid mit Europium-Ionen dotiert ist
@@ -142,7 +126,7 @@
 \begin{frame}[t]\frametitle{Dotierung und Wirtgitter}
 \begin{itemize}
   \item Mit Leuchtstoffen gezielt verunreinigte Halbleiterkristalle
-  \item It has been found that the average life period is practically independent of temperature and wavelength but depends markedly on concentration 
+  \item It has been found that the average life period is practically independent of temperature and wavelength but depends markedly on concentration
   \item the intensity, polarisation and the average life period are all dependent on concentration
 \end{itemize}
 
@@ -157,25 +141,25 @@
     \item Lumineszenz \ce{Ln^* -> Ln + h \nu}
     \end{itemize}
   \end{frame}
-  
+
 \begin{frame}
   \frametitle{Stokes Verschiebung}
     \begin{itemize}
-    \item Ausgestrahltes Licht besitzt eine kleinere Frequenz als absorbierte Strahlung   
+    \item Ausgestrahltes Licht besitzt eine kleinere Frequenz als absorbierte Strahlung
     \end{itemize}
   \end{frame}
 
 
 \begin{frame}[t]\frametitle{Was macht ein Leuchtstoff gut?}
 \begin{itemize}
- \item Anregungsenergie möglichst effizient absorbieren 
+ \item Anregungsenergie möglichst effizient absorbieren
  \item Quantenausbeute möglichst hoch sein soll
-\end{itemize}  
+\end{itemize}
 \end{frame}
 
   %Folie 4 Auswahlregeln
   \begin{frame}[t]\frametitle{Laporte Verbot}
- 
+
 \end{frame}
 \section{}
   \begin{frame}[t]\frametitle{Farben von Lanthanoid-Ionen in wässriger Lösung}
