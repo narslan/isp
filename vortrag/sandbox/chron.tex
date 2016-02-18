@@ -1,14 +1,85 @@
-\documentclass{beamer}
-\usepackage[T1]{fontenc}
+\documentclass{article}
+\usepackage[german]{babel}
+
+%\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+%\usepackage{paratype}
+\usepackage{libertine}
+%\usepackage[scaled]{berasans}
+\renewcommand*\familydefault{\sfdefault}  %%
 \usepackage[utf8]{inputenc}
-\usepackage{charter}
-\usepackage{environ}
+
+\usepackage[T1]{fontenc}
+
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{pgffor}
+\usepackage[version=4]{mhchem}
+%\usetheme{beamertheme-bjeldbak/beamerthemebjeldbak}
 \usepackage{tikz}
-\usetikzlibrary{calc,matrix}
+\usepackage{tikzorbital}
+
 
 
 \begin{document}
 
+\begin{tikzpicture}
+%\draw [->,ultra thick] (-1,-2) --   (-1,4) node[above] {\Large Energie};
+%
+\drawLevel[pos = {(0,0)},    width = 1]{laf1};
+\drawLevel[pos = {(1.2,0)},  width = 1]{laf2};
+\drawLevel[pos = {(2.4,0)},  width = 1]{laf3};
+\drawLevel[pos = {(3.6,0)},  width = 1]{laf4};
+\drawLevel[pos = {(4.8,0)},  width = 1]{laf5};
+\drawLevel[pos = {(6,0)},    width = 1]{laf6};
+\drawLevel[pos = {(7.2,0)},  width = 1]{laf7};
+\drawLevel[pos = {(8.4,0)},  width = 1]{laf8};
 
+
+\drawLevel[elec = up, pos = {(0,1)},    width = 1]{cef1};
+\drawLevel[pos = {(1.2,1)},  width = 1]{cef2};
+\drawLevel[pos = {(2.4,1)},  width = 1]{cef3};
+\drawLevel[pos = {(3.6,1)},  width = 1]{cef4};
+\drawLevel[pos = {(4.8,1)},  width = 1]{cef5};
+\drawLevel[pos = {(6,1)},  width = 1]{cef6};
+\drawLevel[pos = {(7.2,1)},  width = 1]{cef7};
+\drawLevel[pos = {(8.4,1)},  width = 1]{cef8};
+
+
+\drawLevel[elec = up, pos = {(0,2)},    width = 1]{prf1};
+\drawLevel[elec = up, pos = {(1.2,2)},  width = 1]{prf2};
+\drawLevel[pos = {(2.4,2)},  width = 1]{prf3};
+\drawLevel[pos = {(3.6,2)},  width = 1]{prf4};
+\drawLevel[pos = {(4.8,2)},  width = 1]{prf5};
+\drawLevel[pos = {(6,2)},  width = 1]{prf6};
+\drawLevel[pos = {(7.2,2)},  width = 1]{prf7};
+\drawLevel[pos = {(8.4,2)},  width = 1]{prf8};
+
+
+\drawLevel[elec = up, pos = {(0,3)},    width = 1]{ndf1};
+\drawLevel[elec = up, pos = {(1.2,3)},  width = 1]{ndf2};
+\drawLevel[elec = up, pos = {(2.4,3)},  width = 1]{ndf3};
+\drawLevel[pos = {(3.6,3)},  width = 1]{ndf4};
+\drawLevel[pos = {(4.8,3)},  width = 1]{ndf5};
+\drawLevel[pos = {(6,3)},  width = 1]{ndf6};
+\drawLevel[pos = {(7.2,3)},  width = 1]{ndf7};
+\drawLevel[pos = {(8.4,3)},  width = 1]{ndf8};
+
+
+
+
+%\drawLevel[pos = {(0,2)},    width = 1]{5d0};
+%\drawLevel[pos = {(1.2,2)},  width = 1]{5d1};
+%\drawLevel[pos = {(2.4,2)},  width = 1]{5d2};
+%\drawLevel[pos = {(3.6,2)},  width = 1]{5d3};
+%\drawLevel[pos = {(4.8,2)},  width = 1]{5d4};
+\node[right] at (right laf8) {\Large \ce{^{1}_{}S_{0} La^{3+} }  } ;
+\node[right] at (right cef8) {\Large \ce{^{2}_{}F_{5/2} Ce^{3+}  } } ;
+\node[right] at (right prf8) {\Large \ce{^{3}_{}H_{4} Pr^{3+}  } } ;
+\node[right] at (right ndf8) {\Large \ce{^{4}_{}I_{9/2} Nd^{3+}  } } ;
+
+%\node[right] at (right 5d4) {\Large 5d} ;
+
+
+\end{tikzpicture}
 
 \end{document}

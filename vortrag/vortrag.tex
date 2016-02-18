@@ -5,6 +5,7 @@
 \usepackage[default]{opensans}
 %\usepackage{gillius2}
 %\usepackage{lato}
+\usepackage{siunitx}
 
 \usepackage[utf8]{inputenc}
 
@@ -15,18 +16,43 @@
 
 
 \usepackage{microtype}
-\usepackage{xcolor}
+\usepackage{xcolor,multido,colortbl}
 \usepackage{pgffor}
 
 \usepackage{tikz}
 \usepackage[version=4]{mhchem}
+\usepackage{tikzorbital}
 
 %\usepackage{pgfplots}
  %\pgfplotsset{compat=1.13}
 \usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{hyperref}
+\newcommand{\makemycolor}[2]{%
+    \pgfmathsetmacro{\hue}{(#1/100)^1.715*0.79}%
+    \definecolor{myhsbcolor}{hsb}{\hue,1,1}%
+    \textcolor{myhsbcolor}{#2}%
+}
 
 \usepackage[absolute,overlay]{textpos}
 %\usecolortheme[light,accent=red]{solarized}
+%\definecolorseries{H}{hsb}{last}[hsb]{0,1,1}[hsb]{1,1,1}\resetcolorseries[10]{H}
+%\definecolorseries{S}{hsb}{last}[hsb]{0.1,0,0}[hsb]{.1,1,1}\resetcolorseries[10]{S}
+%\definecolorseries{B}{hsb}{last}[hsb]{1,1,0}[hsb]{1,1,1}\resetcolorseries[10]{B}
+\tikzset{
+    level1/.style = {
+        ultra thick,
+        green
+    },
+    level4/.style = {
+        ultra thick,
+        blue
+    },
+    level5/.style = {
+        ultra thick,
+        red
+    }
+}
 
 \newcommand\ytl[2]{
 \parbox[b]{8em}{\hfill{\color{cyan}\bfseries\sffamily #1}~$\cdots\cdots$~}\makebox[0pt][c]{$\bullet$}\vrule\quad \parbox[c]{4.5cm}{\vspace{7pt}\color{red!40!black!80}\raggedright\sffamily #2.\\[7pt]}\\[-3pt]}
@@ -43,37 +69,88 @@
    \setbeamercolor{postit}{fg=black,bg=yellow}
     \frame{\titlepage}
   }
-\section{Einsatzbereiche seltener Erden als Leuchtstoffe} % (fold)
 
-% section section_name (end)
-  \begin{frame}[t]\frametitle{Einsatzbereiche seltener Erden als Leuchtstoffe}
+\begin{frame}[t]\frametitle{Was macht ein Leuchtstoff gut?}
+Es kommt nicht darauf an!
+\begin{itemize}
+   \item hohe Quantenausbeute $QE = \frac{\text{emmitierte \ Photonen}}{\text{absorbierte Photonen}}\%$
+   \item hohe Übergangswahrscheinlichkeit, kurze Lebensdauer und scharfe Emmision 
+   \item geringe Neigung zu strahlungsloser Relaxation \ce{Ln^* -> Ln +} Wärme
+\end{itemize}
+   
+\end{frame}
 
-  \begin{beamerboxesrounded}[shadow=true]{}
-    Einzigartige optischen Eigenschaften
-  \end{beamerboxesrounded}
-  \begin{beamerboxesrounded}[shadow=false]{}
-    Vielfache Einsatzmöglichkeiten als lumineszierende Materialien.
-  \end{beamerboxesrounded}
-\pause
+\begin{frame}[t]\frametitle{Was macht ein Leuchtstoff gut?}
+\begin{columns}
+   \column{.7\textwidth}
     \begin{itemize}
-      \item Leuchtstoffröhren
-      \item Farbfernsehröhren
-      \item Anzeigetafeln
-      \item Plasmabildschirmen
-      \item Die weißen Leuchtdiode (LED)
-      \item Na- und Hg-Dampflampen
-      \item Geldscheine
-      \item Kunstgläser, Pigment
-      \item Upconversion-Leuchtstoffen
-      \item Strahlentherapie zur Behandlung von Hautkrankheiten
+    \item Es kommt darauf an! 
+   \item Farbe ist nicht gleich Wellenlänge
+   \item Pink im sichtbaren Spektrum? 
+   \item Lila ist dunkles Purpur.
     \end{itemize}
-  \end{frame}
+   \column{.3\textwidth}
+      \begin{tikzpicture}
+    \foreach \k in {0,1,...,100}{%
+        \pgfmathsetmacro{\hue}{(\k/100)^1.715*0.79}
+        \definecolor{mycolor}{rgb:hsb}{\hue,1,1}
+        \node[color=mycolor] () at (0,\k/20) {$\bullet$};
+    }%
+    \foreach \f in {0,1,...,10}{%
+        \pgfmathtruncatemacro{\num}{(\f*30)+480}
+        \node () at (0.75,\f/2) {$\num$};
+    }
+    \foreach \g/\h in {0/Rot,2/Orange,4/Gelb,6/Grün,8/Blau,10/Purpur}{%
+        \pgfmathtruncatemacro{\num}{\g*10}
+        \node at (-1,\g/2) {\makemycolor{\num}{\h}};
+    }%
+    \end{tikzpicture}
 
-\section{Gruppeneigenschaften} % (fold)
+\end{columns}
 
-\begin{frame}[t]\frametitle{Elektronenkonfiguration}
+\end{frame}
 
-\begin{beamerboxesrounded}[shadow=true]{Dreiwertigkeit}
+\begin{frame}[t]\frametitle{}
+    
+\begin{beamerboxesrounded}[shadow=true]{Was macht ein Leuchtstoff gut?}
+      Ein quantitatives Maß ist der Farbwiedergabeindex 
+
+     \pgfdeclareimage[interpolate=true,height=6cm]{image1}{pics/cie}
+     \pgfuseimage{image1}
+
+   \end{beamerboxesrounded}
+
+\end{frame}
+   
+
+ 
+%Ein Farbraum beschreibt die Menge der darstellbaren Farben eines Mediums 
+
+\begin{frame}[t]\frametitle{Die drei natürlichen Koordinaten der Farbe}
+    
+
+\begin{itemize}
+      \item Farbton (Wellenlänge) %\multido{\nColr=0+1}{10}{\fcolorbox{white}{H!![\nColr]}{}}
+      \item Sättigung (Weißanteil) %\multido{\nColr=0+1}{10}{\fcolorbox{white}{S!![\nColr]}{}}
+      \item Helligkeit (Intensität ) %\multido{\nColr=0+1}{10}{\fcolorbox{white}{B!![\nColr]}{}}
+    \end{itemize}
+ \end{frame}
+
+
+\begin{frame}[t]\frametitle{Was macht ein Leuchtstoff gut}
+  \begin{beamerboxesrounded}[]{Umweltfreunlich}
+  \begin{itemize}
+   \item geringere UV-Anteile im Licht 
+   \item nicht toxisch sein 
+  \end{itemize}
+  \end{beamerboxesrounded}
+ 
+\end{frame}
+ %Unter den Insekten sind vor allem Nachtfalter betroffen, deren Augen stark auf die UV-Strahlung von Hochdrucklampen reagieren. Die Gebäude- und Straßenlampen werden stundenlang umflogen, bis die Tiere ermatten oder vor Entkräftung sterben.https://de.wikipedia.org/wiki/Quecksilberdampflampe
+
+\begin{frame}[t]\frametitle{Die Farben der Lanthanoiden}
+
+\begin{beamerboxesrounded}[shadow=false]{}
   Die Lanthanoide treten bevorzugt dreiwertig auf.
 \end{beamerboxesrounded}
      \begin{table}
@@ -81,16 +158,16 @@
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{cccccccccccccccc}
 \toprule
- $[Xe]$ &\ce{La^{3+}} & \ce{Ce^{3+}} & \ce{Pr^{3+}} & \ce{Nd^{3+}} & \ce{Pm^{3+}}& \ce{Sm^{3+}} & \ce{Eu^{3+}} & \ce{Gd^{3+}} & \ce{Tb^{3+}}& \ce{Dy^{3+}} & \ce{Ho^{3+}} & \ce{Er^{3+}} & \ce{Tm^{3+}} & \ce{Yb^{3+}} & \ce{Lu^{3+}}\\
-   & \ce{Ce^{4+}} &\ce{Pr^{4+}} & \ce{Nd^{4+}} &\ce{La^{3+}} & \ce{La^{3+}} & \ce{La^{3+}} & \ce{Sm^{2+}} & \ce{Eu^{2+}} & \ce{Dy^{4+}}&  &  & &  & \ce{Tm^{2+}}& \ce{Yb^{2+}}\\
+ $[Xe]$ &\ce{La^{3+}} & \ce{Ce^{3+}} &\cellcolor[RGB]{ 110,194,47} \ce{Pr^{3+}} &\cellcolor[RGB]{202,99 ,138} \ce{Nd^{3+}} & \cellcolor[RGB]{ 240,42 ,242} \ce{Pm^{3+}}&\cellcolor[RGB]{  252, 255, 110} \ce{Sm^{3+}} & \ce{Eu^{3+}} & \ce{Gd^{3+}} & \cellcolor[RGB]{171,228,149} \ce{Tb^{3+}}& \ce{Dy^{3+}} & \ce{Ho^{3+}} & \cellcolor[RGB]{  194,171, 187}\ce{Er^{3+}} & \ce{Tm^{3+}} & \ce{Yb^{3+}} & \ce{Lu^{3+}}\\
+   & \cellcolor[RGB]{254,225,2} \ce{Ce^{4+}} & \cellcolor{yellow}\ce{Pr^{4+}} & \ce{Nd^{4+}} &\ce{La^{3+}} & \ce{La^{3+}} & \ce{La^{3+}} & \cellcolor[RGB]{151,26,14} \ce{Sm^{2+}} & \ce{Eu^{2+}} & \ce{Dy^{4+}}&  &  & &  & \ce{Tm^{2+}}& \ce{Yb^{2+}}\\
    &  & &  &  &  &  &  &  & \ce{Tb^{4+}} &  &  &  &  & & \\
 \midrule
   4f & 0 &1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13& 14\\
   \bottomrule
 \end{tabular}
-}
+} 
 \end{table}
-
+ 
     \begin{itemize}
       \item \ce{La} (\ce{f^0}), \ce{Gd} (\ce{f^7}), \ce{Lu} (\ce{f^{14}}) sind nur dreiwertig.
       \item Die stabilen f-Konfiguration werden erreicht in \ce{Ce^{4+}}, \ce{Tb^{4+}}, \ce{Eu^{2+}},\ce{Yb^{4+}}
@@ -98,88 +175,58 @@
 \end{frame}
 
 
-
-  \begin{frame}[t]\frametitle{ Die farblosen Lanthanoidionen }
-  \begin{beamerboxesrounded}[shadow=false]{\ce{Gd^{3+}, 4f^7, ^{8}_{}S_{7/2}}}
-  \begin{itemize}
-  \item \ce{Gd^{3+}} hat keine Farbe
-  \end{itemize}
-    \end{beamerboxesrounded}
-  \end{frame}
-
-%Terbium
-
- \begin{frame}[t]\frametitle{ Terbium \ce{Tb^{3+}, 4f^8} }
- \begin{columns}
+\begin{frame}[t]\frametitle{Schalenaufbau}
+    
+   \begin{columns}
     \column{.5\textwidth}
-    \begin{block}{\ce{^{5}_{}D_{4} -> ^{7}_{}F_{6}}}
-      \begin{itemize}
-        \item
-      \end{itemize}
-    \end{block}
-        \column{.5\textwidth}
-\begin{block}{\ce{Tb_2(SO_4)}}
-       %  \pgfdeclareimage[interpolate=true,height=3cm]{image1}{pics/tbsulfat}
-       %      \pgfdeclareimage[interpolate=true,height=3cm]{image2}{pics/radar}
-   %\pgfuseimage{image1}\\
-   %\ce{Ce}\\
-   %\pgfuseimage{image2}
-\end{block}
-\end{columns}
-  \end{frame}
-% Dysprosium
-% Dysprosium kommt oft in Begleitung mit den anderen Lanthaniden in den Ytter-Erden vor.
-%(dyspros (gr.) = schwierig).
-
- \begin{frame}[t]\frametitle{ Dysprosium \ce{Dy^{3+}, 4f^9} \\ \textcolor{white}{Dysprosiumi} \ce{Dy^{4+}, 4f^8}}
- \begin{columns}
+      
+    \begin{adjustbox}{max totalsize={.9\textwidth}{\textheight},center}
+\begin{tikzpicture}
+\draw [->,ultra thick] (0,0) --   (0,10) node[above] {\Large Energie};
+\draw [->,ultra thick] (0,0) -- node[below] {\Large n (Schale)} (20,0);
+    \draw[level4] (6,1) -- node[above] {4s} (7,1);
+       \draw[level4] (6,2.5) -- node[above] {4p} (7,2.5);
+       \draw[level4] (4.8,2.5) --  (5.8,2.5);
+       \draw[level4] (7.2,2.5) --  (8.2,2.5);
+      \draw[level4] (6,4) -- node[above] {4d} (7,4);
+       \draw[level4] (7.2,4) --  (8.2,4);
+       \draw[level4] (8.4,4) --  (9.4,4);
+       \draw[level4] (4.8,4) --  (5.8,4);
+       \draw[level4] (3.6,4) --  (4.6,4);
+       \draw[level4] (6,6) -- node[above] {4f} (7,6);
+       \draw[level4] (7.2,6) --  (8.2,6);
+       \draw[level4] (8.4,6) --  (9.4,6);
+       \draw[level4] (4.8,6) --  (5.8,6);
+        \draw[level4] (3.6,6) --  (4.6,6);
+        \draw[level4] (2.4,6) --  (3.4,6);
+      \draw[level4] (9.6,6) --  (10.6,6);
+      \draw[level5] (14,3)  -- node[above] {5s} (15,3);
+       \draw[level5] (14,5) -- node[above] {5p} (15,5);
+       \draw[level5] (12.8,5) --  (13.8,5);
+       \draw[level5] (15.2,5) --  (16.2,5);
+       \draw[level5] (14,6.5) -- node[above] {5d} (15,6.5);
+       \draw[level5] (12.8,6.5) --  (13.8,6.5);
+       \draw[level5] (15.2,6.5) --  (16.2,6.5);
+        \draw[level5] (11.6,6.5) --  (12.6,6.5);
+       \draw[level5] (16.4,6.5) --  (17.4,6.5);
+       \draw[level1] (18,5.9) -- node[above] {6s} (19,5.9);
+    \end{tikzpicture}
+\end{adjustbox}
     \column{.5\textwidth}
-    \begin{block}{\ce{^{5}_{}D_{4} -> ^{7}_{}F_{6}}}
-      \begin{itemize}
-        \item
-      \end{itemize}
-    \end{block}
-        \column{.5\textwidth}
-\begin{block}{Emmissionbanden}
-\fcolorbox{gray}[wave]{572}{\parbox{4cm}{\ce{^{4}_{}F_{9/2} -> ^{6}_{}H_{13/2}\\ 572 nm}}}\\
-\fcolorbox{gray}[wave]{480}{\parbox{4cm}{\ce{^{4}_{}F_{9/2} -> ^{6}_{}H_{15/2}\\ 480 nm}}}
-
-\end{block}
+    \begin{itemize}
+    %alle Elemente enthaltenzwei s-Elektronen in der äußersten (6.) Schale
+    % jeweils zwei s-Elektronen und sechs p-Elektronen in der zweitäußersten (5.) Schale
+  \item \ce{6s^2} 
+  \item \ce{5s^2} und \ce{5p^6} 
+\end{itemize}    
 \end{columns}
-  \end{frame}
-%Holmium
-%Das Lasermaterial Yttrium-Aluminium-Granat (YAG) ist neben Neodym häufig auch mit Holmium dotiert.
-\begin{frame}[t]\frametitle{ Holmium \ce{Ho^{3+}, 4f^{10}} }
- \begin{columns}
-    \column{.5\textwidth}
-    \begin{block}{\ce{^{5}_{}F_{4} -> ^{5}_{}I_{8}}}
-      \begin{itemize}
-        \item
-      \end{itemize}
-    \end{block}
-        \column{.5\textwidth}
-\begin{block}{Emmissionbanden}
-\fcolorbox{gray}[wave]{534}{\parbox{4cm}{\ce{^{5}_{}F_{4} -> ^{5}_{}I_{8}\\ 534 nm}}}\\
-\end{block}
-\end{columns}
-  \end{frame}
 
-%Erbium
+\end{frame}
 
-\begin{frame}[t]\frametitle{ Holmium \ce{Ho^{3+}, 4f^{10}} }
- \begin{columns}
-    \column{.5\textwidth}
-    \begin{block}{\ce{^{5}_{}F_{4} -> ^{5}_{}I_{8}}}
-      \begin{itemize}
-        \item
-      \end{itemize}
-    \end{block}
-        \column{.5\textwidth}
-\begin{block}{Emmissionbanden}
-\fcolorbox{gray}[wave]{420}{\parbox{4cm}{\ce{^{5}_{}F_{4} -> ^{5}_{}I_{8}\\ 534 nm}}}\\
-\end{block}
-\end{columns}
-  \end{frame}
+
+
+
+
 
 
 \begin{frame}[t]\frametitle{Dotierung}
@@ -236,7 +283,26 @@
 \end{itemize}
 
 \end{frame}
+
+
+\begin{frame}[t]\frametitle{Literaturverzeichnis}
+    
+
+\begin{thebibliography}{9}
+
+\bibitem{wikilila}
+\emph{Violett}
+ \url{https://de.wikipedia.org/wiki/Violett}.
+
+\end{thebibliography}
+  
+
+
+\end{frame}
+
+
 %http://www.rsc.org/chemistryworld/News/2009/September/01090901.asp
 %https://www.osapublishing.org/oe/fulltext.cfm?uri=oe-19-S3-A331
 \end{document}
 
+% Reference
