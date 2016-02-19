@@ -277,3 +277,62 @@
       \item Strahlentherapie zur Behandlung von Hautkrankheiten
     \end{itemize}
   \end{frame}
+
+
+  \begin{tikzpicture}[every node/.style=draw]
+\pgfsetmatrixcolumnsep{1cm,between origins}
+\pgfmatrix{rectangle}{center}{mymatrix}
+{\pgfusepath{}}{\pgfpointorigin}{\let\&=\pgfmatrixnextcell}
+{
+\node (a) {8}; \& \node (b) {1}; \&[between borders] \node (c) {6}; \\
+\node {3}; \& \node {5}; \& \node {7}; \\
+\node {4}; \& \node {9}; \& \node {2}; \\
+}
+\begin{scope}[every node/.style=]
+\draw [<->,red,thick] (a.center) -- (b.center) node [above,midway] {10mm};
+\draw [<->,red,thick] (b.east) -- (c.west) node [above,midway]
+{10mm};
+\end{scope}
+\end{tikzpicture}
+
+
+
+\begin{tikzpicture}
+[auto,
+decision/.style={diamond, draw=blue, thick, fill=blue!20,
+text width=4.5em,align=flush center,
+inner sep=1pt},
+block/.style ={rectangle, draw=blue, thick, fill=blue!20,
+text width=5em,align=center, rounded corners,
+minimum height=4em},
+line/.style ={draw, thick, -latex’,shorten >=2pt},
+cloud/.style ={draw=red, thick, ellipse,fill=red!20,
+minimum height=2em}]
+\matrix [column sep=5mm,row sep=7mm]
+{
+% row 1
+\node [cloud] (expert) {expert}; &
+\node [block] (init) {initialize model}; &
+\node [cloud] (system) {system}; \\
+% row 2
+& \node [block] (identify) {identify candidate model}; & \\
+% row 3
+\node [block] (update) {update model}; &
+\node [block] (evaluate) {evaluate candidate models}; & \\
+% row 4
+& \node [decision] (decide) {is best candidate}; & \\
+% row 5
+& \node [block] (stop) {stop}; & \\
+};
+\begin{scope}[every path/.style=line]
+\path (init) -- (identify);
+\path (identify) -- (evaluate);
+\path (evaluate) -- (decide);
+\path (update) |- (identify);
+\path (decide) -| node [near start] {yes} (update);
+\path (decide) -- node [midway] {no} (stop);
+\path [dashed] (expert) -- (init);
+\path [dashed] (system) -- (init);
+\path [dashed] (system) |- (evaluate);
+\end{scope}
+\end{tikzpicture}
