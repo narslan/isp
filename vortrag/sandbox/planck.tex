@@ -1,0 +1,82 @@
+\documentclass{article}
+
+%encoding
+%--------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%----------------------------
+
+%fonts
+%--------------------------------------
+%---------------
+% \setromanfont{Times New Roman}
+% \setsansfont{Arial}
+% \setmonofont[Color={0019D4}]{Courier New}
+%
+\usepackage{libertine}
+\usepackage{beramono}
+
+%units
+%--------------------------------------
+\usepackage{siunitx}
+
+%drawing
+%------------------------------------
+\usepackage{tikz} % To generate the plot from csv
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.11}
+\usepgfplotslibrary{units}
+
+
+\begin{document}
+
+
+%\pgfplotstableread{spec.dat}\loadedtable
+\pgfplotsset{
+plotl/.style={blue,no marks,ultra thick,domain=480:780,samples=50},
+plotd/.style={red,no marks,ultra thick,domain=-2:2,samples=50}
+}
+\begin{figure}[h!]
+  \begin{center}
+
+    \begin{tikzpicture}
+      \begin{axis}[
+          width=\linewidth, % Scale the plot to \linewidth
+          xlabel= $E$, % Set the labels
+          ylabel= $i$,
+          x unit= \si{\milli\volt} , % Set the respective units
+          y unit= \si{\milli\ampere},
+          no marks,
+         legend style={at={(0.5,-0.2)},anchor=north},
+          ]
+
+    \addplot
+         table[x=nm,y=int,col sep=comma] {spec.dat};
+%\addplot[plotl]{0.15*exp(-x/0.5)/(0.5*sinh(4)}; %\addlegendentry{$T = 0.5$}\label{plot:probL}
+
+        %\addplot
+        % add a plot from table; you select the columns by using the actual name in
+        % % the .csv file (on top)
+        % table[x=Potential,y=Current,col sep=comma] {table4.csv};
+        % \addplot
+        % table[x=Potential,y=Current,col sep=comma] {table5.csv};
+        % \addplot
+        % table[x=Potential,y=Current,col sep=comma] {table6.csv};
+        % \addplot
+        % table[x=Potential,y=Current,col sep=comma] {table7.csv};
+        % \addplot
+        % table[x=Potential,y=Current,col sep=comma] {table8.csv};
+        % \addplot
+        % table[x=Potential,y=Current,col sep=comma] {table9.csv};
+        % \addplot
+        % table[x=Potential,y=Current,col sep=comma] {table10.csv};
+        % \legend{0.005 , 0.01, 0.025, 0.05, 0.1, 0.25, 0.5}
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Aufgabe 3 Überlappung}
+  \end{center}
+\end{figure}
+
+
+\end{document}
