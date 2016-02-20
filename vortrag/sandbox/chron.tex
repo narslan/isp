@@ -17,7 +17,30 @@
 %\usetheme{beamertheme-bjeldbak/beamerthemebjeldbak}
 \usepackage{tikz}
 \usepackage{tikzorbital}
+\usetikzlibrary{shapes.callouts} 
 
+\pgfkeys{%
+    /calloutquote/.cd,
+    width/.code                   =  {\def\calloutquotewidth{#1}},
+    position/.code                =  {\def\calloutquotepos{#1}}, 
+    author/.code                  =  {\def\calloutquoteauthor{#1}},
+    /calloutquote/.unknown/.code   =  {\let\searchname=\pgfkeyscurrentname
+                                 \pgfkeysalso{\searchname/.try=#1,                                
+    /tikz/\searchname/.retry=#1},\pgfkeysalso{\searchname/.try=#1,
+                                  /pgf/\searchname/.retry=#1}}
+                            }  
+
+
+\newcommand\calloutquote[2][]{%
+       \pgfkeys{/calloutquote/.cd,
+         width               = 5cm,
+         position            = {(0,-1)},
+         author              = {}}
+  \pgfqkeys{/calloutquote}{#1}                   
+  \node [rectangle callout,callout relative pointer={\calloutquotepos},text width=\calloutquotewidth,/calloutquote/.cd,
+     #1] (tmpcall) at (0,0) {#2};
+  \node at (tmpcall.pointer){\calloutquoteauthor};    
+}  
 
 
 \begin{document}
@@ -33,7 +56,7 @@
 \drawLevel[pos = {(6,0)},    width = 1]{laf6};
 \drawLevel[pos = {(7.2,0)},  width = 1]{laf7};
 \drawLevel[pos = {(8.4,0)},  width = 1]{laf8};
-
+%\calloutquote[author=Russelsunders,width=0.5*\linewidth,position={(0,-1)},fill=green!30,rounded corners]{$\ce{^{2S+1}_{}L_J}$};
 
 \drawLevel[elec = up, pos = {(0,1)},    width = 1]{cef1};
 \drawLevel[pos = {(1.2,1)},  width = 1]{cef2};
@@ -80,6 +103,10 @@
 %\node[right] at (right 5d4) {\Large 5d} ;
 
 
+
 \end{tikzpicture}
 
+%\begin{tikzpicture}
+%\calloutquote[author=Russelsunderskopplungsschema,width=0.5*\linewidth,position={(0,-1)},fill=green!30,rounded corners]{$\ce{^{2S+1}_{}L_J}$};
+%\end{tikzpicture} 
 \end{document}

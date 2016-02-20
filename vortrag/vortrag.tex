@@ -23,16 +23,21 @@
 \usepackage[version=4]{mhchem}
 \usepackage{tikzorbital}
 
-%\usepackage{pgfplots}
- %\pgfplotsset{compat=1.13}
+\usepackage{pgfplots}
+ %\pgfplotsset{com  =1.13}
 \usepackage{graphicx}
 \usepackage{adjustbox}
 \usepackage{hyperref}
+\usepgfmodule{matrix} 
+\usetikzlibrary{matrix,positioning}
+\usetikzlibrary{arrows}
+
 \newcommand{\makemycolor}[2]{%
     \pgfmathsetmacro{\hue}{(#1/100)^1.715*0.79}%
     \definecolor{myhsbcolor}{hsb}{\hue,1,1}%
     \textcolor{myhsbcolor}{#2}%
 }
+\newcommand\gauss[2]{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))} % Gauss function, parameters mu and sigma
 
 \usepackage[absolute,overlay]{textpos}
 %\usecolortheme[light,accent=red]{solarized}
@@ -80,14 +85,13 @@ Es kommt nicht darauf an!
    
 \end{frame}
 
-\begin{frame}[t]\frametitle{Was macht ein Leuchtstoff gut?}
+\begin{frame}[t]\frametitle{Was macht ein Leuchtstoff bunt?}
 \begin{columns}
    \column{.7\textwidth}
     \begin{itemize}
-    \item Es kommt darauf an! 
-   \item Farbe ist nicht gleich Wellenlänge
-   \item Pink im sichtbaren Spektrum? 
-   \item Lila ist dunkles Purpur.
+    \item Farbe ist nicht gleich Wellenlänge
+    \item Pink im sichtbaren Spektrum? 
+  % \item Lila ist dunkles Purpur.
     \end{itemize}
    \column{.3\textwidth}
       \begin{tikzpicture}
@@ -110,18 +114,6 @@ Es kommt nicht darauf an!
 
 \end{frame}
 
-\begin{frame}[t]\frametitle{}
-    
-\begin{beamerboxesrounded}[shadow=true]{Was macht ein Leuchtstoff gut?}
-      Ein quantitatives Maß ist der Farbwiedergabeindex 
-
-     \pgfdeclareimage[interpolate=true,height=6cm]{image1}{pics/cie}
-     \pgfuseimage{image1}
-
-   \end{beamerboxesrounded}
-
-\end{frame}
-   
 
  
 %Ein Farbraum beschreibt die Menge der darstellbaren Farben eines Mediums 
@@ -131,17 +123,60 @@ Es kommt nicht darauf an!
 
 \begin{itemize}
       \item Farbton (Wellenlänge) %\multido{\nColr=0+1}{10}{\fcolorbox{white}{H!![\nColr]}{}}
-      \item Sättigung (Weißanteil) %\multido{\nColr=0+1}{10}{\fcolorbox{white}{S!![\nColr]}{}}
+      \begin{tikzpicture}
+          \colorlet{color min hsb}[hsb]{red}
+  \colorlet{color max hsb}[hsb]{magenta}
+   \foreach \pos in {100,...,0}{
+    \colorlet{my color hsb}[rgb]{color min hsb!\pos!color max hsb}
+    \fill[fill=my color hsb,draw=none] (-3+\pos/20,0) rectangle +(5mm,3mm);
+  }
+      \end{tikzpicture}
+   \item Sättigung (Weißanteil) 
+\begin{tikzpicture}
+          \colorlet{color min hsb}[hsb]{white}
+  \colorlet{color max hsb}[hsb]{red}
+   \foreach \pos in {100,...,0}{
+    \colorlet{my color hsb}[rgb]{color max hsb!\pos!}
+    \fill[fill=my color hsb,draw=none] (-3+\pos/20,0) rectangle +(5mm,3mm);
+  }
+      \end{tikzpicture}
       \item Helligkeit (Intensität ) %\multido{\nColr=0+1}{10}{\fcolorbox{white}{B!![\nColr]}{}}
-    \end{itemize}
+      \item Strahlungsleistung (Wiens oder Planck) 
+      \item $\lambda _{max} \cdot T $ = konst.
+   \end{itemize}
  \end{frame}
 
 
-\begin{frame}[t]\frametitle{Was macht ein Leuchtstoff gut}
+
+%Mit zunehmender Temperatur verschiebt sich die maximale Strahlungsintensität eines Schwarzen Körpers zu kürzeren Wellenlängen, der Farbeindruck wechselt dabei vom Roten ins Bläulich-Weiße. Der Farbton einer (Wärme-) Lichtquelle lässt sich als Temperatur eines vergleichbaren Schwarzen Strahlers angeben. Damit erhält man die Farbtemperatur der Lichtquelle.
+\begin{frame}[t]\frametitle{Farbetemperatur}
+\begin{beamerboxesrounded}[shadow=false]{}
+\begin{figure}[!h]
+\centering
+      \includegraphics[width=\textwidth]{pics/ct.png}
+      \caption{\footnotesize Farbtemperatur nach dem planckschen Strahlungsgesetz}
+ \end{figure}
+\end{beamerboxesrounded}
+
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}[scale=0.8]
+
+\begin{axis}[every axis plot post/.append style={
+  mark=none,samples=50,smooth}, % All plots: from -2:2, 50 samples, smooth, no marks
+axis x line*=bottom, % no box around the plot, only x and y axis
+axis y line*=left, % the * suppresses the arrow tips
+enlargelimits=upper] % extend the axes a bit to the right and top
+%\addplot table[x=x,y=y] {pics/probe.dat};
+\end{axis}
+\end{tikzpicture}
+ \end{figure}
+\end{frame}
+   
+\begin{frame}[t]\frametitle{Was macht ein Leuchtstoff umweltfreundlich?}
   \begin{beamerboxesrounded}[]{Umweltfreunlich}
   \begin{itemize}
    \item geringere UV-Anteile im Licht 
-   \item nicht toxisch sein 
   \end{itemize}
   \end{beamerboxesrounded}
  
@@ -158,9 +193,9 @@ Es kommt nicht darauf an!
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{cccccccccccccccc}
 \toprule
- $[Xe]$ &\ce{La^{3+}} & \ce{Ce^{3+}} &\cellcolor[RGB]{ 110,194,47} \ce{Pr^{3+}} &\cellcolor[RGB]{202,99 ,138} \ce{Nd^{3+}} & \cellcolor[RGB]{ 240,42 ,242} \ce{Pm^{3+}}&\cellcolor[RGB]{  252, 255, 110} \ce{Sm^{3+}} & \ce{Eu^{3+}} & \ce{Gd^{3+}} & \cellcolor[RGB]{171,228,149} \ce{Tb^{3+}}& \ce{Dy^{3+}} & \ce{Ho^{3+}} & \cellcolor[RGB]{  194,171, 187}\ce{Er^{3+}} & \ce{Tm^{3+}} & \ce{Yb^{3+}} & \ce{Lu^{3+}}\\
-   & \cellcolor[RGB]{254,225,2} \ce{Ce^{4+}} & \cellcolor{yellow}\ce{Pr^{4+}} & \ce{Nd^{4+}} &\ce{La^{3+}} & \ce{La^{3+}} & \ce{La^{3+}} & \cellcolor[RGB]{151,26,14} \ce{Sm^{2+}} & \ce{Eu^{2+}} & \ce{Dy^{4+}}&  &  & &  & \ce{Tm^{2+}}& \ce{Yb^{2+}}\\
-   &  & &  &  &  &  &  &  & \ce{Tb^{4+}} &  &  &  &  & & \\
+ $[Xe]$ &\ce{La^{3+}} & \ce{Ce^{3+}} &\cellcolor[RGB]{ 110,194,47} \ce{Pr^{3+}} &\cellcolor[RGB]{202,99 ,138} \ce{Nd^{3+}} & \cellcolor[RGB]{ 240,42 ,242} \ce{Pm^{3+}}&\cellcolor[RGB]{  252, 255, 110} \ce{Sm^{3+}} & \ce{Eu^{3+}} & \ce{Gd^{3+}} & \ce{Tb^{3+}}& \cellcolor[RGB]{ 163, 255, 0} \ce{Dy^{3+}} &  \cellcolor[RGB]{  255,255, 0} \ce{Ho^{3+}} & \cellcolor[RGB]{  194,171, 187}\ce{Er^{3+}} & \cellcolor[RGB]{171,228,149} \ce{Tm^{3+}} & \ce{Yb^{3+}} & \ce{Lu^{3+}}\\
+   & \cellcolor[RGB]{254,225,2} \ce{Ce^{4+}} & \cellcolor{yellow}\ce{Pr^{4+}} &\cellcolor[RGB]{ 111, 0,255} \ce{Nd^{4+}} &&  &  & \cellcolor[RGB]{151,26,14} \ce{Sm^{2+}} & \ce{Eu^{2+}} & \cellcolor[RGB]{ 251, 241, 35}\ce{Dy^{4+}}&  &  & &  &\cellcolor[RGB]{ 163,79,128}\ce{Tm^{2+}}&  \cellcolor[RGB]{181,201,19}\ce{Yb^{2+}}\\
+   &  & &  &  &  &  &  &  & \cellcolor[RGB]{60,0,0} \ce{Tb^{4+}} &  &  &  &  & & \\
 \midrule
   4f & 0 &1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13& 14\\
   \bottomrule
@@ -178,7 +213,7 @@ Es kommt nicht darauf an!
 \begin{frame}[t]\frametitle{Schalenaufbau}
     
    \begin{columns}
-    \column{.5\textwidth}
+    \column{.8\textwidth}
       
     \begin{adjustbox}{max totalsize={.9\textwidth}{\textheight},center}
 \begin{tikzpicture}
@@ -212,55 +247,125 @@ Es kommt nicht darauf an!
        \draw[level1] (18,5.9) -- node[above] {6s} (19,5.9);
     \end{tikzpicture}
 \end{adjustbox}
-    \column{.5\textwidth}
-    \begin{itemize}
-    %alle Elemente enthaltenzwei s-Elektronen in der äußersten (6.) Schale
-    % jeweils zwei s-Elektronen und sechs p-Elektronen in der zweitäußersten (5.) Schale
-  \item \ce{6s^2} 
-  \item \ce{5s^2} und \ce{5p^6} 
-\end{itemize}    
+    \column{.2\textwidth}
+     
 \end{columns}
 
 \end{frame}
 
 
+\begin{frame}[t]\frametitle{RusselSanderskopplung}
+\begin{itemize}
+  \item Mehrelektronenzustände
+  \item für einen gegebenen Wert von L existieren jeweils $2L+1$ entarteter Bandzustände 
+  \item charakterisiert durch die magnetischen $M_L = 3,2,1,0,-1,-2,-3$ 
+  \item S = Spinquantenzahl 
+  \pause
+  \item \begin{tikzpicture}[scale=0.8]
 
+\drawLevel[elec = up, pos = {(0,3)},    width = 1]{ndf1};
+\drawLevel[elec = up, pos = {(1.2,3)},  width = 1]{ndf2};
+\drawLevel[elec = up, pos = {(2.4,3)},  width = 1]{ndf3};
+\drawLevel[pos = {(3.6,3)},  width = 1]{ndf4};
+\drawLevel[pos = {(4.8,3)},  width = 1]{ndf5};
+\drawLevel[pos = {(6,3)},  width = 1]{ndf6};
+\drawLevel[pos = {(7.2,3)},  width = 1]{ndf7};
+\drawLevel[pos = {(8.4,3)},  width = 1]{ndf8};
+\node[right] at (right ndf8) {\Large \ce{^{4}_{}I_{9/2} Nd^{3+}  } } ;
 
-
-
-
-\begin{frame}[t]\frametitle{Dotierung}
-\ce{Y2O3:Eu^{2+}} bedeutet, dass ein Wirtgitter aus Yttriumoxid mit Europium-Ionen dotiert ist
- d. h. dass ca. fünf Prozent der Yttrium-Ionen durch Europium-Ionen ersetzt wurde.
-
+\end{tikzpicture}
+\end{itemize}
+%\ce{Y2O3:Eu^{2+}} bedeutet, dass ein Wirtgitter aus Yttriumoxid mit Europium-Ionen dotiert ist
+% d. h. dass ca. fünf Prozent der Yttrium-Ionen durch Europium-Ionen ersetzt wurde.
 
 \end{frame}
 
+\begin{frame}[t]\frametitle{Interkombinationsverbot\cite{holeman}}
+    %jeder Übergang, bei dem sich der sich Gesamtspin geändert, ist verboten 
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}[scale=0.8]
 
-\begin{frame}[t]\frametitle{Dotierung und Wirtgitter}
+\drawLevel[elec = updown, pos = {(0,3)},    width = 1]{ndf1};
+\drawLevel[elec = up, pos = {(1.2,3)},  width = 1]{ndf2};
+\drawLevel[elec = up, pos = {(2.4,3)},  width = 1]{ndf3};
+\drawLevel[elec = up, pos = {(3.6,3)},  width = 1]{ndf4};
+\drawLevel[elec = up, pos = {(4.8,3)},  width = 1]{ndf5};
+\drawLevel[elec = up, pos = {(6,3)},  width = 1]{ndf6};
+\drawLevel[elec = none, pos = {(7.2,3)},  width = 1]{ndf7};
+\node[right] at (right ndf7) {\Large \ce{^{5}_{}S_{7/2} Gd^{3+}  } } ;
+
+
+\drawLevel[elec = up, pos = {(0,1)},    width = 1]{ndf21};
+\drawLevel[elec = up, pos = {(1.2,1)},  width = 1]{ndf2};
+\drawLevel[elec = up, pos = {(2.4,1)},  width = 1]{ndf3};
+\drawLevel[elec = up,pos = {(3.6,1)},  width = 1]{ndf4};
+\drawLevel[elec = up,pos = {(4.8,1)},  width = 1]{ndf5};
+\drawLevel[elec = up,pos = {(6,1)},  width = 1]{ndf6};
+\drawLevel[elec = up,pos = {(7.2,1)},  width = 1]{ndf9};
+\node[right] at (right ndf9) {\Large \ce{^{8}_{}S_{7/2} Gd^{3+}  } } ;
+\node at (0.5,4) {$-3$};
+\node at (1.5,4) {$-2$};
+\node at (2.7,4) {$-1$};
+\node at (4,4) {$0$};
+\node at (5.5,4) {$1$};
+\node at (6.5,4) {$2$};
+\node at (7.5,4) {$3$};
+\draw [<-, ultra thick] (left ndf1) edge[bend right]  (left ndf21);
+\end{tikzpicture}
+\caption{Interkombinationsverbot}
+
+\end{figure}
+\begin{itemize}
+  \item Verboten, weil zu Spinpaarungen führt.
+  \item die farblosen Beispiele aus ÜM: \ce{Fe^{3+}}, \ce{Mn^{2+}}
+  \item farblos auch \ce{La^{3+} f^0}, \ce{Gd^{3+} f^7},\ce{Lu^{3+} f^{14}}   
+\end{itemize}
+\end{frame}
+\begin{frame}[t]\frametitle{Regel von Laporte}
+\begin{itemize}
+  \item Übergänge zwischen unterschiedlicher Parität erlaubt
+  \item s- und d-Orbitale sind gerade
+  \item p- und d-Orbitale sind ungerade  
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}[t]\frametitle{\small Derzeit eingesetzte Leuchtstoffe für Color-80-Lampen.}
+    \begin{tabular}{lccccc}
+\toprule
+\multirow{2}{*}{Leuchtstoff}& Abk. &  \ce{$\lambda$} & Abs. bei  & QE & LE  \\
+& &\si{\nano\meter}&254 \si{\nano\meter}  & \% & \si{\lumen\per\watt}\\
+\midrule
+ \ce{BaMgAl_{10}O_{17}:Eu}& BAM & \cellcolor[wave]{450} 450  & 90 &  90 &90\\
+\ce{(Ce,Tb)MgAl_{11}O_{19}}   & CAT   &  \cellcolor[wave]{541} 541  &  95 & 90& 495\\
+\ce{Y_2O_3:Eu}    & YOX   &  \cellcolor[wave]{611} 611  &  75 & 90 &280\\
+\ce{LaPO_4:Ce,Tb}  & LAP  & \cellcolor[wave]{545} 545 & 95 &93 & 500\\
+\bottomrule
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}[t]\frametitle{Konzentration Abhängigkeit }
 \begin{itemize}
   \item Mit Leuchtstoffen gezielt verunreinigte Halbleiterkristalle
   \item It has been found that the average life period is practically independent of temperature and wavelength but depends markedly on concentration
   \item the intensity, polarisation and the average life period are all dependent on concentration
+  \item 
 \end{itemize}
 
 
 \end{frame}
 
   \begin{frame}
-  \frametitle{Lumineszenz}
-    \begin{itemize}
-    \item Der eigentliche Lumineszenzprozeß ist weitgehend unabhängig von der chemischen Umgebung
-    \item Strahlungslose Desaktivierung \ce{Ln^* -> Ln +} Wärme
-    \item Lumineszenz \ce{Ln^* -> Ln + h \nu}
-    \item VUV Photonen (145-180 nm)
-    \end{itemize}
+  \frametitle{Quantenteiler}
+ 
   \end{frame}
 
 \begin{frame}
   \frametitle{Stokes Verschiebung}
     \begin{itemize}
-    \item Ausgestrahltes Licht besitzt eine kleinere Frequenz als absorbierte Strahlung
+    \item 
     \end{itemize}
   \end{frame}
 
@@ -272,17 +377,6 @@ Es kommt nicht darauf an!
 \end{itemize}
 \end{frame}
 
-  %Folie 4 Auswahlregeln
-  \begin{frame}[t]\frametitle{Laporte Verbot}
-
-\end{frame}
-\section{}
-  \begin{frame}[t]\frametitle{Farben von Lanthanoid-Ionen in wässriger Lösung}
-\begin{itemize}
-  \item In Verbindungen liegt Lanthan als farbloses \ce{La^{3+}} vor.
-\end{itemize}
-
-\end{frame}
 
 
 \begin{frame}[t]\frametitle{Literaturverzeichnis}
@@ -293,11 +387,10 @@ Es kommt nicht darauf an!
 \bibitem{wikilila}
 \emph{Violett}
  \url{https://de.wikipedia.org/wiki/Violett}.
-
+\bibitem{holeman}
+E. Wiberg, \emph{Lehrbuch der Anorganische Chemie}, 102. Aufl., De Gruyter, Berlin \textbf{2007}, S. 1370.
 \end{thebibliography}
   
-
-
 \end{frame}
 
 
