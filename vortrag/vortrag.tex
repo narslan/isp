@@ -24,26 +24,29 @@
 \usepackage{tikzorbital}
 
 \usepackage{pgfplots}
+\pgfplotsset{compat=1.13} 
  %\pgfplotsset{com  =1.13}
 \usepackage{graphicx}
 \usepackage{adjustbox}
 \usepackage{hyperref}
+\usepackage{caption}
+
 \usepgfmodule{matrix} 
 \usetikzlibrary{matrix,positioning}
 \usetikzlibrary{arrows}
-
+\usetikzlibrary{calc,shapes}
+\usetikzlibrary{backgrounds}
 \newcommand{\makemycolor}[2]{%
     \pgfmathsetmacro{\hue}{(#1/100)^1.715*0.79}%
     \definecolor{myhsbcolor}{hsb}{\hue,1,1}%
     \textcolor{myhsbcolor}{#2}%
 }
-\newcommand\gauss[2]{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))} % Gauss function, parameters mu and sigma
 
 \usepackage[absolute,overlay]{textpos}
-%\usecolortheme[light,accent=red]{solarized}
-%\definecolorseries{H}{hsb}{last}[hsb]{0,1,1}[hsb]{1,1,1}\resetcolorseries[10]{H}
-%\definecolorseries{S}{hsb}{last}[hsb]{0.1,0,0}[hsb]{.1,1,1}\resetcolorseries[10]{S}
-%\definecolorseries{B}{hsb}{last}[hsb]{1,1,0}[hsb]{1,1,1}\resetcolorseries[10]{B}
+
+
+
+
 \tikzset{
     level1/.style = {
         ultra thick,
@@ -91,6 +94,7 @@ Es kommt nicht darauf an!
     \begin{itemize}
     \item Farbe ist nicht gleich Wellenlänge
     \item Pink im sichtbaren Spektrum? 
+    \item Es gibt andere Bestandteile
   % \item Lila ist dunkles Purpur.
     \end{itemize}
    \column{.3\textwidth}
@@ -118,11 +122,10 @@ Es kommt nicht darauf an!
  
 %Ein Farbraum beschreibt die Menge der darstellbaren Farben eines Mediums 
 
-\begin{frame}[t]\frametitle{Die drei natürlichen Koordinaten der Farbe}
-    
-
+\begin{frame}[t]\frametitle{Woraus besteht Farbe?}
+  Die drei natürlichen Koordinaten der Farbe
 \begin{itemize}
-      \item Farbton (Wellenlänge) %\multido{\nColr=0+1}{10}{\fcolorbox{white}{H!![\nColr]}{}}
+      \item Farbton, (Wellenlänge,\textbf{hue}) %\multido{\nColr=0+1}{10}{\fcolorbox{white}{H!![\nColr]}{}}
       \begin{tikzpicture}
           \colorlet{color min hsb}[hsb]{red}
   \colorlet{color max hsb}[hsb]{magenta}
@@ -131,7 +134,12 @@ Es kommt nicht darauf an!
     \fill[fill=my color hsb,draw=none] (-3+\pos/20,0) rectangle +(5mm,3mm);
   }
       \end{tikzpicture}
-   \item Sättigung (Weißanteil) 
+   \item Sättigung (Weißanteil?) 
+   \begin{itemize}
+   \item Gesättigte Farben -> die spektrale Reinheit 
+   \item Ungesättigte Farben sind unbunte Farben (schwarz, grau, weiß).
+   \item Farben mit geringer Sättigung werden Pastellfarben genannt
+   \end{itemize}
 \begin{tikzpicture}
           \colorlet{color min hsb}[hsb]{white}
   \colorlet{color max hsb}[hsb]{red}
@@ -140,39 +148,116 @@ Es kommt nicht darauf an!
     \fill[fill=my color hsb,draw=none] (-3+\pos/20,0) rectangle +(5mm,3mm);
   }
       \end{tikzpicture}
+
+
       \item Helligkeit (Intensität ) %\multido{\nColr=0+1}{10}{\fcolorbox{white}{B!![\nColr]}{}}
-      \item Strahlungsleistung (Wiens oder Planck) 
-      \item $\lambda _{max} \cdot T $ = konst.
+      \begin{itemize}
+        \item  wird am model eines Schwarzkörpers analysert
+      \end{itemize}
+      
    \end{itemize}
+
+
  \end{frame}
+
+
+\begin{frame}[t]\frametitle{Helligkeit am model eines Schwarzkörpers }
+\begin{itemize}
+  \item 
+\end{itemize}
+
+Die gesamte ausgestrahlte Energie $P$ [\si{\watt}] ...
+     \begin{itemize}
+     \item einer Oberflächen $A$
+       \item proportional zur vierten Potenz der Temperatur
+      \item  $\epsilon(T)$ ist materialabhängig
+     \end{itemize}
+   \begin{equation}
+        P = \epsilon(T) \cdot \sigma \cdot A \cdot T^4
+      \end{equation}
+
+\begin{table}[!h]
+\centering
+      \begin{tabular}{ccc}
+\toprule
+\multirow{2}{*}{Material}&   Temperatur &  Emissivität  \\
+& $T$ \si{\celsius}& $\epsilon(T)$\\
+\midrule
+ Wasser  & 10...50 &0,965  \\
+ Sand & 20& 0,76\\
+ Eisen,poliert & -73...727 & 0,32...0,60 \\
+ Alufolie & 298 & 0.03 \\
+\bottomrule
+\end{tabular}
+\caption{Beispiele für Emmisionsgrade einiger Oberflächen}
+\end{table}
+\end{frame}
+
+\begin{frame}[t]\frametitle{Oberflächen aus Lanthanoiden}
+    
+\begin{figure}[!h]
+\centering
+      \includegraphics[scale=0.2]{pics/yagce.jpg}
+      \caption*{\footnotesize \ce{(Y_{1-x}Gd_x)_3(Al_{1-y}Ga_y)_5O_{12}:Ce^{\cite{yagce}}} }
+ \end{figure}
+\end{frame}
+
+
 
 
 
 %Mit zunehmender Temperatur verschiebt sich die maximale Strahlungsintensität eines Schwarzen Körpers zu kürzeren Wellenlängen, der Farbeindruck wechselt dabei vom Roten ins Bläulich-Weiße. Der Farbton einer (Wärme-) Lichtquelle lässt sich als Temperatur eines vergleichbaren Schwarzen Strahlers angeben. Damit erhält man die Farbtemperatur der Lichtquelle.
-\begin{frame}[t]\frametitle{Farbetemperatur}
-\begin{beamerboxesrounded}[shadow=false]{}
+\begin{frame}[t]\frametitle{Farbtemperatur}
+\begin{itemize}
+  \item Plancksverteilungs
+  \begin{itemize}
+  \item \small Bei niedrigen Temperaturen wird hauptsächlich rotes Licht
+  \item \small bei hohen Temperaturen blaues Licht abgestrahlt.
+\end{itemize}
+
+\end{itemize}
+
+
+%\begin{figure}[!h]
+%\centering
+
+%\begin{tikzpicture}[scale=0.2]
+
+% \begin{axis}[every axis plot post/.append style={
+%   mark=none,samples=50,smooth}, % All plots: from -2:2, 50 samples, smooth, no marks
+% axis x line*=bottom, % no box around the plot, only x and y axis
+% axis y line*=left, % the * suppresses the arrow tips
+% enlargelimits=upper] % extend the axes a bit to the right and top
+% \addplot table[x=x,y=y] {pics/probe.dat};
+% \end{axis}
+% \end{tikzpicture}
+%  \end{figure}
+
+
 \begin{figure}[!h]
 \centering
       \includegraphics[width=\textwidth]{pics/ct.png}
-      \caption{\footnotesize Farbtemperatur nach dem planckschen Strahlungsgesetz}
+      \caption*{\footnotesize Farbtemperatur nach dem planckschen Strahlungsgesetz}
  \end{figure}
-\end{beamerboxesrounded}
 
-\begin{figure}[!h]
-\centering
-\begin{tikzpicture}[scale=0.8]
 
-\begin{axis}[every axis plot post/.append style={
-  mark=none,samples=50,smooth}, % All plots: from -2:2, 50 samples, smooth, no marks
-axis x line*=bottom, % no box around the plot, only x and y axis
-axis y line*=left, % the * suppresses the arrow tips
-enlargelimits=upper] % extend the axes a bit to the right and top
-%\addplot table[x=x,y=y] {pics/probe.dat};
-\end{axis}
-\end{tikzpicture}
- \end{figure}
 \end{frame}
    
+\begin{frame}[t]\frametitle{Wiensches Verschiebungsgesetz: }
+Die einfachste Verknüpfung der Strahlungsintensität mit der Wellenlänge     
+\begin{equation}
+    \lambda _{max}=\frac{2897,7 \mu m \cdot K}{T}
+  \end{equation}
+  \begin{itemize}
+  \item \footnotesize $\lambda _{max}$ Wellenlänge $\mu m$, bei der die Intensität pro Wellenlängenintervall maximal ist
+  \item \footnotesize  $T$: absolute Temperatur der strahlenden Fläche
+\end{itemize}
+\end{frame}
+
+
+
+%Je höher die Temperatur eines Körpers ist, bei desto kürzeren Wellenlängen liegt das Maximum der Verteilung. 
+%Die Wellenlänge maximaler Strahlungsleistung verschiebt sich also bei einer Temperaturänderung einfach umgekehrt proportional zur absoluten Temperatur des schwarzen Strahlers: Verdoppelt sich die Temperatur des Strahlers, so tritt die größte Strahlungsleistung bei der halben Wellenlänge auf.
 \begin{frame}[t]\frametitle{Was macht ein Leuchtstoff umweltfreundlich?}
   \begin{beamerboxesrounded}[]{Umweltfreunlich}
   \begin{itemize}
@@ -331,7 +416,25 @@ enlargelimits=upper] % extend the axes a bit to the right and top
   
 \end{frame}
 
-\begin{frame}[t]\frametitle{\small Derzeit eingesetzte Leuchtstoffe für Color-80-Lampen.}
+\begin{frame}[t]\frametitle{\small Derzeit eingesetzte gute Leuchtstoffe }
+  \begin{itemize}
+    \item Das Drei-Banden-Konzept
+          \begin{itemize}
+            \item \footnotesize Fluoreszenzlampen mit sehr guter Farbwiedergabe und hoher Lichtausbeute
+          \end{itemize}
+  \end{itemize}
+
+\begin{figure}[!h]
+\centering
+      \includegraphics[scale=0.2]{pics/dd.jpg}
+      \caption*{\footnotesize \ce{Emission einer Drei-Banden-Leuchtstofflampe} }
+ \end{figure}
+
+
+\end{frame}
+
+\begin{frame}[t]\frametitle{Eine Farbpalette}
+    
     \begin{tabular}{lccccc}
 \toprule
 \multirow{2}{*}{Leuchtstoff}& Abk. &  \ce{$\lambda$} & Abs. bei  & QE & LE  \\
@@ -341,10 +444,19 @@ enlargelimits=upper] % extend the axes a bit to the right and top
 \ce{(Ce,Tb)MgAl_{11}O_{19}}   & CAT   &  \cellcolor[wave]{541} 541  &  95 & 90& 495\\
 \ce{Y_2O_3:Eu}    & YOX   &  \cellcolor[wave]{611} 611  &  75 & 90 &280\\
 \ce{LaPO_4:Ce,Tb}  & LAP  & \cellcolor[wave]{545} 545 & 95 &93 & 500\\
+\ce{MgGePO_{5.5}F:Mn}  & MGM  & \cellcolor[wave]{655} 655 & 95 &80 & 80\\
 \bottomrule
 \end{tabular}
 
+\begin{figure}[!h]
+\centering
+      \includegraphics[scale=0.2]{pics/palette.jpg}
+      \caption*{\footnotesize \ce{Emission einer Drei-Banden-Leuchtstofflampe} }
+ \end{figure}
+
+
 \end{frame}
+
 
 \begin{frame}[t]\frametitle{Konzentration Abhängigkeit }
 \begin{itemize}
@@ -372,8 +484,10 @@ enlargelimits=upper] % extend the axes a bit to the right and top
 
 \begin{frame}[t]\frametitle{Was macht ein Leuchtstoff gut?}
 \begin{itemize}
- \item Anregungsenergie möglichst effizient absorbieren
- \item Quantenausbeute möglichst hoch sein soll
+ \item \footnotesize Das von einer blauen oder UV-LED emittierte Licht ist
+deutlich intensiver als dasjenige, das in einem Hg-Plasma
+entsteht. 
+ \item \footnotesize Quantenausbeute möglichst hoch sein soll
 \end{itemize}
 \end{frame}
 
@@ -383,7 +497,9 @@ enlargelimits=upper] % extend the axes a bit to the right and top
     
 
 \begin{thebibliography}{9}
-
+\bibitem{yagce}
+\emph{Yag-Ce}
+ \url{http://www.scientificmaterials.com/products/ce-yag.php}.
 \bibitem{wikilila}
 \emph{Violett}
  \url{https://de.wikipedia.org/wiki/Violett}.

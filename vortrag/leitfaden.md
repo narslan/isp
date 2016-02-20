@@ -336,3 +336,48 @@ minimum height=2em}]
 \path [dashed] (system) |- (evaluate);
 \end{scope}
 \end{tikzpicture}
+
+\begin{tabular}{ccc}
+\toprule
+\multirow{2}{*}{Material}&   Temperatur &  Emissivität  \\
+& $T$ \si{\celsius}& $\epsilon(T)$\\
+\midrule
+ Buchenholz & 70& 0.91\\
+\bottomrule
+\end{tabular}
+
+
+\item Gesättigte Farben -> spektrale Reinheit 
+   \item Ungesättigte Farben sind unbunte Farben (schwarz, grau, weiß).
+   \item Farben mit geringer Sättigung: Pastellfarben 
+   \end{itemize}
+
+
+      \item Helligkeit (Intensität ) %\multido{\nColr=0+1}{10}{\fcolorbox{white}{B!![\nColr]}{}}
+      \item Abhängigket von Temperatur und 
+      \item Mit Stefan-Boltzmann-Gesetz 
+      \begin{equation}
+        P = \epsilon(T) \cdot \sigma \cdot A \cdot T^4
+      \end{equation}
+      \item 
+   \end{itemize}
+
+
+
+   \begin{itemize}
+  \item Wiensches Gesetz besagt...
+  
+\end{itemize}
+\begin{equation}
+    \lambda _{max}=\frac{2897,7 \mikro m \cdot K}{T}
+  \end{equation}
+\begin{itemize}
+  \item \footnotesize $\lambda _{max}$ Wellenlänge $\mikro m$, bei der die Intensität pro Wellenlängenintervall maximal ist
+  \item \footnotesize  $T$: absolute Temperatur der strahlenden Fläche
+\end{itemize}
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}[scal
+
+
+\ce{Sr_2P_2O_7:Eu}  & SPE  & \cellcolor[wave]{420} 420 & 95 &80 & 80\\
