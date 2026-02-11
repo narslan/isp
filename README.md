@@ -1,20 +1,13 @@
 # ISP Protokolle – Integriertes Synthese Praktikum
 
 Dieses Repository enthält Protokolle aus dem **Integrierten Synthese Praktikum (ISP)**.
-Die Dokumente zeigen mehrstufige Synthesestrategien, Reaktionsmechanismen sowie experimentelle Auswertungen und können als Vorlage oder Referenz für eigene Praktikumsprotokolle dienen.
-
-Die Protokolle wurden mit LuaLaTeX erstellt.
+Sie können als Vorlage für eigene Praktikumsprotokolle dienen.
 
 ## Hinweise
-
+* Die Protokolle dienen ausschließlich als Vorlage, und zeigen Beispiele wie LuaLaTex im Zusammenhang eines Chemiepraktikums verwendet wurde. 
 * Die Dokumente sind alte Praktikumsprotokolle vor etwa zehn Jahren und spiegeln den damaligen Stand wider.
-* Sicherheitsrichtlinien des jeweiligen Labors haben immer Vorrang.
-* Die Protokolle dienen ausschließlich Referenzzwecken.
 
-## Technischer Hintergrund
-
-Die PDFs wurden mit einer LaTeX-basierten Pipeline erstellt:
-
+### Kern-Techstack
 * LuaLaTeX
 * chemfig / chemmacros
 * TikZ / PGFPlots
