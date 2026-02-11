@@ -1,15 +1,5 @@
 \documentclass{beamer}
-\usepackage[german]{babel}
-%\usepackage{libertine}
-%\renewcommand*\familydefault{\sfdefault}  %%
-\usepackage[default]{opensans}
-%\usepackage{gillius2}
-%\usepackage{lato}
 \usepackage{siunitx}
-
-\usepackage[utf8]{inputenc}
-
-\usepackage[T1]{fontenc}
 
 \usepackage{booktabs} % To thicken table lines
 \usepackage{multirow}
@@ -19,13 +9,28 @@
 \usepackage{xcolor,multido,colortbl}
 \usepackage{pgffor}
 
-\usepackage{tikz}
-\usepackage[version=4]{mhchem}
 \usepackage{tikzorbital}
 
+% tikzorbital orbital sichern
+\let\tikzorbitalorbital\orbital
+
+\usepackage{chemmacros}
+
+\chemsetup{
+  modules = {
+    reactions,
+    spectroscopy,
+    scheme
+  },
+  formula = mhchem
+}
+
+% chemmacros orbital sichern
+\let\chemmacrosorbital\orbital
+\let\orbital\tikzorbitalorbital
+
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.13} 
- %\pgfplotsset{com  =1.13}
+\pgfplotsset{compat=1.18} 
 \usepackage{graphicx}
 \usepackage{adjustbox}
 \usepackage{hyperref}
@@ -306,8 +311,7 @@ Kerze &1500 \\
 \begin{frame}[t]\frametitle{4f-Orbitalaufbau}
     
 \begin{tikzpicture}
-%\draw [->,ultra thick] (-1,-2) --   (-1,4) node[above] {\Large Energie};
-%
+
 \drawLevel[pos = {(0,0)},    width = 1]{laf1};
 \drawLevel[pos = {(1.2,0)},  width = 1]{laf2};
 \drawLevel[pos = {(2.4,0)},  width = 1]{laf3};
@@ -315,7 +319,6 @@ Kerze &1500 \\
 \drawLevel[pos = {(4.8,0)},  width = 1]{laf5};
 \drawLevel[pos = {(6,0)},    width = 1]{laf6};
 \drawLevel[pos = {(7.2,0)},  width = 1]{laf7};
-%\calloutquote[author=Russelsunders,width=0.5*\linewidth,position={(0,-1)},fill=green!30,rounded corners]{$\ce{^{2S+1}_{}L_J}$};
 
 \drawLevel[elec = up, pos = {(0,1)},    width = 1]{cef1};
 \drawLevel[pos = {(1.2,1)},  width = 1]{cef2};
@@ -384,21 +387,6 @@ Kerze &1500 \\
 \drawLevel[elec = up,pos = {(6,7)},  width = 1]{gdf6};
 \drawLevel[elec = up,pos = {(7.2,7)},  width = 1]{gdf7};
 
-
-
-%%%%%%
-
-
-
-
-
-
-
-%\drawLevel[pos = {(0,2)},    width = 1]{5d0};
-%\drawLevel[pos = {(1.2,2)},  width = 1]{5d1};
-%\drawLevel[pos = {(2.4,2)},  width = 1]{5d2};
-%\drawLevel[pos = {(3.6,2)},  width = 1]{5d3};
-%\drawLevel[pos = {(4.8,2)},  width = 1]{5d4};
 \node[right] at (right laf7) {\Large \ce{^{1}_{}S_{0}  }  } ;
 \node[right] at (right cef7) {\Large \ce{^{2}_{}F_{5/2}  } } ;
 \node[right] at (right prf7) {\Large \ce{^{3}_{}H_{4}   } } ;
@@ -428,12 +416,6 @@ Kerze &1500 \\
 \node[below,xshift=4mm] at (left laf5) {\Large \ce{ 1  } } ;
 \node[below,xshift=4mm] at (left laf6) {\Large \ce{ 2  } } ;
 \node[below,xshift=5mm] at (left laf7) {\Large \ce{ 3  } } ;
-
-
-
-%\node[right] at (right 5d4) {\Large 5d} ;
-
-
 
 \end{tikzpicture}
 
@@ -692,10 +674,6 @@ salzartige Wirststrukturen gezielt mit Metallionen dotiert (<5 mol-\%)
 
 
 \end{frame}
-
-
-
-
 
 \begin{frame}[t]\frametitle{Literaturverzeichnis}
     

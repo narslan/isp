@@ -15,7 +15,7 @@
 
 
 #### Was macht ein Leuchtstoff gut?
-1. Ein guter Leuchtstoff soll die Anregungsenergie möglichst effizient absorbieren und in Form von Licht wieder emmitieren; das bedutet, das die Quantenausbeute möglichst höchst sein soll. Quantenausbeute gibt das Verhältnis von emmitierter zu absorbierter Zahl von Photonen an.
+1. Ein guter Leuchtstoff soll die Anregungsenergie möglichst effizient absorbieren und in Form von Licht wieder emmitieren; das bedeutet, das die Quantenausbeute möglichst höchst sein soll. Quantenausbeute gibt das Verhältnis von emmitierter zu absorbierter Zahl von Photonen an.
 2. Zwichen Absorption und Emmision sol möglichst wenig Zeit verstreichen, damit kein Nachleuten auftritt.
 > Um dieses Ziel zu erreichen benötigt man Übergänge möglichst hoher Übergangswahrscheinlichkeit und kurzer Lebensdauer. Diese Kriterien werden von Seltenerdionen am besten erfüllt. Deren 4f-Zustände weisen wegen ihrer geringen WW mit dem Wirtgitternahezu konstante Energidifferenzen zueinander auf und zeigen dadurch außerdem eine geringe Neigung zu strahlungsloser Relaxation.
 3. Die Lichtqualität einer Lichtquelle wird im wesentlichen durch

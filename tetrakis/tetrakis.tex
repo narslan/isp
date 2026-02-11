@@ -1,32 +1,51 @@
 \documentclass[12pt]{article}
-\usepackage{amsmath,mathtools}
-\usepackage[usenames,dvipsnames]{xcolor}
-%\usepackage[bitstream-charter]{mathdesign}
-\usepackage{microtype}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{libertine}
-\usepackage[german]{babel}
 
-%\usepackage{fontspec}
-%\setmainfont{Corbel}
-%\usepackage[libertine]{newtxmath}
-\renewcommand{\familydefault}{\sfdefault}
+% LuaLaTeX basics
+\usepackage{fontspec}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{unicode-math}
+% Fonts (Libertine-Äquivalent, modern)
+\setmainfont{Libertinus Serif}
+\setsansfont{Libertinus Sans}
+\setmonofont{Libertinus Mono}
 
-\usepackage{graphicx}
-
-
-\usepackage{siunitx}
-\usepackage{fancyhdr}
-\usepackage{sectsty}
+% Layout & typography
+\usepackage[a4paper]{geometry}
 \usepackage{setspace}
-\usepackage{booktabs} % To thicken table lines
-%\usepackage{chemstyle}
-\usepackage[version=4]{mhchem}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tabularx}
+
+% Chemistry
+\usepackage{chemfig}
+\usepackage[modules]{chemmacros}
+\usepackage{siunitx}
+\chemsetup{
+  modules = {
+    reactions,
+    spectroscopy,
+    scheme
+  },
+  formula = mhchem
+}
+\usepackage{fancyhdr}
+\usepackage{overcite}
+\usepackage{hyperref}
+\usepackage{tabulary}
 
 
 \usepackage[ddmmyyyy]{datetime}
 \renewcommand{\dateseparator}{.}
+\usepackage{overcite}
+\renewcommand\citeform[1]{[#1]}
+
+
+\newcommand\textbox[1]{%
+  \parbox{.333\textwidth}{#1}%
+}
 
 \pagestyle{fancy}
 
@@ -36,29 +55,10 @@
 \rhead{\today}
 \setlength{\headheight}{15pt}
 
-\usepackage{overcite}
-\renewcommand\citeform[1]{[#1]}
-
-%\renewcommand*\printatom[1]{{\fontsize{10}{12}\selectfont\ensuremath{\mathsf{#1}}}}
-\sectionfont{\fontsize{12}{15}\selectfont}
-
-\makeatletter
-    \setlength\@fptop{0\p@}
-\makeatother
-
-
-\newcommand\textbox[1]{%
-  \parbox{.333\textwidth}{#1}%
-}
-
-
-\setlength{\headheight}{15pt}
- \sisetup{
-        detect-all %,               %% Benutze gleiche Schriftarten wie im Text
-    }
 \renewcommand{\thesection}{\arabic{section}.}
 \renewcommand{\thesubsection}{\thesection\arabic{subsection}}
 \renewcommand{\headrulewidth}{0pt}
+
 \begin{document}
 
 \begin{onehalfspace}
@@ -110,7 +110,7 @@ Zur Darstellung des Tetrakis(trimethylsily)silans wurde ein 500-ml-Dreihalskolbe
 -9.8 (s, \ce{Si-CH_3}),
 -135.1 (s, \ce{Si}).
 
-
+\rmfamily
 \section{Mechanismus\cite{silicongilman}}
 In dem ersten Schritt der Reaktion findet eine Salz-Metathese statt. Dies wird durch einen Einelektronentransferschritt eingeleitet.
 Das Lithium(0) (\textbf{2}) gibt ein Elektron ab und reduziert dabei das Tetrachlorsilan (\textbf{1}) unter Abspaltung des Chloridions.
